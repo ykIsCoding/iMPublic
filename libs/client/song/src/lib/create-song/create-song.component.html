@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Song</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="back()">
+        <ion-icon name="chevron-forward" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="cont" [formGroup]="form">
+    <div class="desc">
+        Enter the name, artist, and album for the song you would like to add.
+    </div>
+    <im-item [touched]="true">
+      <ion-icon slot="start" name="name"></ion-icon>
+      <input formControlName="name" type="name" placeholder="Song Name" />
+      <im-error *ngIf="!form.controls.name.valid && form.controls.name.touched"></im-error>
+        Please enter the song name.
+    </im-item>
+    <im-item [touched]="true">
+      <ion-icon slot="start" name="artist"></ion-icon>
+      <input formControlName="artist" type="artist" placeholder="Song Artist" />
+      <im-error *ngIf="!form.controls.artist.valid && form.controls.artist.touched"></im-error>
+        Please enter the song artist.
+    </im-item>
+    <im-item [touched]="true">
+      <ion-icon slot="start" name="album"></ion-icon>
+      <input formControlName="album" type="album" placeholder="Song album" />
+      <im-error *ngIf="!form.controls.album.valid && form.controls.album.touched"></im-error>
+        Please enter the song album.
+    </im-item>
+    <ion-button [disabled]="!form.valid" (click)="submit()">Submit</ion-button>
+  </form>
+</ion-content>

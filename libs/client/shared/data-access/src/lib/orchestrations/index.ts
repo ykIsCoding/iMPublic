@@ -17,3 +17,4 @@ export * from './sp-application.orchestration';
 export * from './transaction.orchestration';
 export * from './user.orchestration';
 export * from './voucher.orchestration';
+export * from './song.orchestration';

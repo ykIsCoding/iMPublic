@@ -48,3 +48,5 @@ export * from './lib/user/user.entity';
 export * from './lib/user/user.repository';
 export * from './lib/voucher/voucher.entity';
 export * from './lib/voucher/voucher.repository';
+export * from './lib/song/song.entity';
+export * from './lib/song/song.repository';

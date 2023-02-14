@@ -41,6 +41,8 @@ import { ServeAdminEntity } from './serve-admin/serve-admin.entity';
 import { ServeAdminRepository } from './serve-admin/serve-admin.repository';
 import { ServePartnerEntity } from './serve-partner/serve-partner.entity';
 import { ServePartnerRepository } from './serve-partner/serve-partner.repository';
+import { SongEntity } from './song/song.entity';
+import { SongRepository } from './song/song.repository';
 import { SpApplicationEntity } from './sp-application/sp-application.entity';
 import { SpApplicationRepository } from './sp-application/sp-application.repository';
 import { TaskEntity } from './task/task.entity';
@@ -80,6 +82,7 @@ const entities = TypeOrmModule.forFeature([
   TransactionEntity,
   UserEntity,
   VoucherEntity,
+  SongEntity
 ]);
 
 const repositories: Provider[] = [
@@ -107,6 +110,7 @@ const repositories: Provider[] = [
   TransactionRepository,
   UserRepository,
   VoucherRepository,
+  SongRepository
 ];
 
 @Module({

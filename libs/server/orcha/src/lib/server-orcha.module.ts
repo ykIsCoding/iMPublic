@@ -17,6 +17,7 @@ import { ProjectOrchestration } from './project/project.orchestration';
 import { RequestOrchestration } from './request/request.orchestration';
 import { ServeAdminOrchestration } from './serve-admin/serve-admin.orchestration';
 import { ServePartnerOrchestration } from './serve-partner/serve-partner.orchestration';
+import { SongOrchestration } from './song/song.orchestration';
 import { SpApplicationGateway } from './sp-application/sp-application.gateway';
 import { SpApplicationOrchestration } from './sp-application/sp-application.orchestration';
 import { StorageOrchestration } from './storage/storage.orchestration';
@@ -49,6 +50,7 @@ import { VoucherOrchestration } from './voucher/voucher.orchestration';
         TransactionOrchestration,
         UserOrchestration,
         VoucherOrchestration,
+        SongOrchestration
       ],
       gateways: [EpApplicationGateway, SpApplicationGateway],
     }),

@@ -24,6 +24,7 @@ import { RequestService } from './request/request.service';
 import { ServeAdminService } from './serve-admin/serve-admin.service';
 import { ServePartnerService } from './serve-partner/serve-partner.service';
 import { SMSService } from './sms/sms.service';
+import { SongService } from './song/song.service';
 import { SpApplicationService } from './sp-application/sp-application.service';
 import { StorageService } from './storage/storage.service';
 import { DbTransactionCreator } from './transaction-creator/transaction-creator.service';
@@ -63,6 +64,7 @@ const services: Provider[] = [
   TransactionService,
   UserService,
   VoucherService,
+  SongService
 ];
 
 @Global()

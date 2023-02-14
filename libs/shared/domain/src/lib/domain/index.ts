@@ -22,6 +22,7 @@ export * from './question-answer';
 export * from './request';
 export * from './serve-admin';
 export * from './serve-partner';
+export * from './song';
 export * from './sp-application';
 export * from './storage';
 export * from './task';

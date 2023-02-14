@@ -42,10 +42,11 @@ import {
   PassportDocumentOrchestration,
   ProjectOrchestration,
   ServeAdminOrchestration,
+  SongOrchestration,
   SpApplicationOrchestration,
   TransactionOrchestration,
   UserOrchestration,
-  VoucherOrchestration,
+  VoucherOrchestration
 } from './orchestrations';
 import { OfferOrchestration } from './orchestrations/offer.orchestration';
 import { PoiOrchestration } from './orchestrations/poi.orchestration';
@@ -103,6 +104,7 @@ import { StorageOrchestration } from './orchestrations/storage.orchestration';
         TransactionOrchestration,
         UserOrchestration,
         VoucherOrchestration,
+        SongOrchestration
       ],
       gateways: [EpApplicationGateway, SpApplicationGateway],
       interceptors: [AuthInterceptor],

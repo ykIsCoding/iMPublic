@@ -1,8 +1,4 @@
 {
-  "npmScope": "involvemint",
-  "affected": {
-    "defaultBase": "master"
-  },
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
@@ -13,6 +9,10 @@
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "npmScope": "involvemint",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
@@ -108,6 +108,9 @@
       "tags": []
     },
     "migrate": {
+      "tags": []
+    },
+    "client-song": {
       "tags": []
     }
   }

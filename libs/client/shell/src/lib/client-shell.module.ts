@@ -86,6 +86,10 @@ import { WalletComponent } from './wallet/wallet.component';
         canActivate: [ImAppGuard],
       },
       {
+        path: ImRoutes.songs.ROOT,
+        loadChildren: () => import('@involvemint/client/song').then((m) => m.ClientSongModule),
+      },
+      {
         path: '',
         component: ImAppComponent,
         canActivate: [ImAppGuard],

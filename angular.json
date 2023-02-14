@@ -1,5 +1,37 @@
 {
   "version": 1,
+  "cli": {
+    "analytics": "480193af-1f96-4b69-8237-5dc326a52c61",
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "involvemint",
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
   "projects": {
     "involvemint": {
       "projectType": "application",
@@ -870,38 +902,28 @@
           }
         }
       }
-    }
-  },
-  "cli": {
-    "analytics": "480193af-1f96-4b69-8237-5dc326a52c61",
-    "defaultCollection": "@nrwl/angular"
-  },
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
+    },
+    "client-song": {
+      "projectType": "library",
+      "root": "libs/client/song",
+      "sourceRoot": "libs/client/song/src",
+      "prefix": "involvemint",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/client/song"],
+          "options": {
+            "jestConfig": "libs/client/song/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/client/song/src/**/*.ts", "libs/client/song/src/**/*.html"]
+          }
+        }
       }
-    },
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
     }
-  },
-  "defaultProject": "involvemint"
+  }
 }

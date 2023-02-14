@@ -29,6 +29,9 @@ export const ImRoutes = {
   forgotPasswordChange: {
     ROOT: 'forgotPasswordChange',
   },
+  songs: {
+    ROOT: 'songs',
+  },
   market: {
     ROOT: 'market',
     ep: {
@@ -165,5 +168,5 @@ export const ImRoutes = {
     users: {
       ROOT: 'users',
     },
-  },
+  }
 };
