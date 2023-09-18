@@ -15,13 +15,20 @@ namespace InvolveMINT.API.Core.EnrollmentAggregate
     }
 
     public DateTime DateApplied { get; set; }
+
     public DateTime? DateSubmitted { get; set; }
+
     public DateTime? DateApproved { get; set; }
+
     public DateTime? DateDenied { get; set; }
+
     public DateTime? DateRetired { get; set; }
+
     public bool AcceptedWaiver { get; set; }
-    public Guid ChangeMakerId { get; set; }
-    public Guid ProjectId { get; set; }
+
+    public Guid? ChangeMakerId { get; set; }
+
+    public Guid? ProjectId { get; set; }
 
     public List<EnrollmentDocumentEntity> EnrollmentDocuments { get; set; } = new List<EnrollmentDocumentEntity>();
   }

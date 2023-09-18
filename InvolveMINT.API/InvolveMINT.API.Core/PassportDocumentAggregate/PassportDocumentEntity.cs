@@ -15,6 +15,8 @@ namespace InvolveMINT.API.Core.PassportDocumentAggregate
     public string FilePath { get; set; }
     public string Name { get; set; }
     public DateTime UploadedDate { get; set; }
+    public Guid? ChangeMakerId { get; set; }
+
 
   }
 }

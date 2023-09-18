@@ -16,14 +16,22 @@ namespace InvolveMINT.API.Core.ChangeMakerAggregate
       OnboardingState = onboardingState;
     }
 
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string ProfilePicFilePath { get; set; }
-    public string Bio { get; set; }
-    public string Phone { get; set; }
-    public ChangeMakerOnboardingState OnboardingState { get; set; }
+    public string FirstName { get; set; } = null!;
+
+    public string LastName { get; set; } = null!;
+
+    public string? ProfilePicFilePath { get; set; }
+
+    public string? Bio { get; set; }
+
+    public string Phone { get; set; } = null!;
+
+    public ChangeMakerOnboardingState OnboardingState { get; set; } = null!;
+
     public DateTime DateCreated { get; set; }
+
     public Guid? HandleId { get; set; }
+
     public Guid? AddressId { get; set; }
   }
 }

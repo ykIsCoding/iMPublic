@@ -15,19 +15,19 @@ namespace InvolveMINT.API.Core.AddressAggregate
       Country = country;
     }
 
-    public string Address1 { get; set; }
+    public string Address1 { get; set; } = null!;
 
-    public string Address2 { get; set; }
+    public string? Address2 { get; set; }
 
-    public string Address3 { get; set; }
+    public string? Address3 { get; set; }
 
-    public string City { get; set; }
+    public string City { get; set; } = null!;
 
-    public string State { get; set; }
+    public string State { get; set; } = null!;
 
-    public string Zip { get; set; }
+    public string Zip { get; set; } = null!;
 
-    public string Country { get; set; }
+    public string Country { get; set; } = null!;
 
   }
 }

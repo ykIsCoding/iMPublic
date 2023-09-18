@@ -1,4 +1,3 @@
-using System;
 using InvolveMINT.API.Core.EnrollmentAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

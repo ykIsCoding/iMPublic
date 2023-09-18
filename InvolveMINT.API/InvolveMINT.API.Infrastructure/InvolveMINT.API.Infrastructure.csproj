@@ -20,8 +20,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Data\Config\EnrollmentConfigurations\" />
+    <None Remove="Data\Queries\" />
+    <None Remove="Data\Config\ChangeMakerConfigurations\" />
+    <None Remove="Data\Config\ExchangePartnerConfigurations\" />
+    <None Remove="Data\Config\VoucherConfigurations\" />
+    <None Remove="Data\Config\ProofOfImpactConfigurations\" />
+    <None Remove="Data\Config\ServePartnerConfigurations\" />
+    <None Remove="Data\UserConfigurations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\Config\EnrollmentConfigurations\" />
+    <Folder Include="Data\Queries\" />
+    <Folder Include="Data\Config\ChangeMakerConfigurations\" />
+    <Folder Include="Data\Config\ExchangePartnerConfigurations\" />
+    <Folder Include="Data\Config\VoucherConfigurations\" />
+    <Folder Include="Data\Config\ProofOfImpactConfigurations\" />
+    <Folder Include="Data\Config\ServePartnerConfigurations\" />
+    <Folder Include="Data\UserConfigurations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="TestingScaffold\InvolvemintContext.cs" />
+    <Compile Remove="TestingScaffold\Address.cs" />
+    <Compile Remove="TestingScaffold\ChangeMaker.cs" />
+    <Compile Remove="TestingScaffold\ChangeMakerViewEntity.cs" />
+    <Compile Remove="TestingScaffold\Credit.cs" />
+    <Compile Remove="TestingScaffold\Enrollment.cs" />
+    <Compile Remove="TestingScaffold\EnrollmentDocument.cs" />
+    <Compile Remove="TestingScaffold\EpApplication.cs" />
+    <Compile Remove="TestingScaffold\ExchangeAdmin.cs" />
+    <Compile Remove="TestingScaffold\ExchangePartner.cs" />
+    <Compile Remove="TestingScaffold\ExchangePartnerViewEntity.cs" />
+    <Compile Remove="TestingScaffold\Handle.cs" />
+    <Compile Remove="TestingScaffold\LinkedVoucherOffer.cs" />
+    <Compile Remove="TestingScaffold\Migration.cs" />
+    <Compile Remove="TestingScaffold\Offer.cs" />
+    <Compile Remove="TestingScaffold\PassportDocument.cs" />
+    <Compile Remove="TestingScaffold\Poi.cs" />
+    <Compile Remove="TestingScaffold\Project.cs" />
+    <Compile Remove="TestingScaffold\ProjectDocument.cs" />
+    <Compile Remove="TestingScaffold\Question.cs" />
+    <Compile Remove="TestingScaffold\QuestionAnswer.cs" />
+    <Compile Remove="TestingScaffold\Request.cs" />
+    <Compile Remove="TestingScaffold\ServeAdmin.cs" />
+    <Compile Remove="TestingScaffold\ServePartner.cs" />
+    <Compile Remove="TestingScaffold\SpApplication.cs" />
+    <Compile Remove="TestingScaffold\Task.cs" />
+    <Compile Remove="TestingScaffold\Transaction.cs" />
+    <Compile Remove="TestingScaffold\TypeormMetadatum.cs" />
+    <Compile Remove="TestingScaffold\User.cs" />
+    <Compile Remove="TestingScaffold\Voucher.cs" />
   </ItemGroup>
 </Project>

@@ -16,12 +16,28 @@ namespace InvolveMINT.API.Infrastructure.Data.Config
           .HasConversion(
               id => id.ToString(),
               str => Guid.Parse(str)
-          )
-          .IsRequired();
+      )
+      .IsRequired();
 
-      builder.Property(e => e.FilePath).HasColumnName("filePath").IsRequired();
-      builder.Property(e => e.Name).HasColumnName("name").IsRequired();
-      builder.Property(e => e.UploadedDate).HasColumnName("uploadedDate");
+      builder.Property(e => e.ChangeMakerId)
+        .HasColumnName("changeMakerId")
+        .HasColumnType("text")
+        .HasConversion(
+            id => id.ToString(),
+            str => str == null ? null : Guid.Parse(str)
+        );
+
+      builder.Property(e => e.FilePath)
+          .HasColumnType("character varying")
+          .HasColumnName("filePath");
+
+      builder.Property(e => e.Name)
+          .HasColumnType("character varying")
+          .HasColumnName("name");
+
+      builder.Property(e => e.UploadedDate)
+          .HasColumnType("timestamp without time zone")
+          .HasColumnName("uploadedDate");
     }
   }
 }
