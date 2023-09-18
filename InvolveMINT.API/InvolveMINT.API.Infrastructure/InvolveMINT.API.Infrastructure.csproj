@@ -26,7 +26,7 @@
     <None Remove="Data\Config\VoucherConfigurations\" />
     <None Remove="Data\Config\ProofOfImpactConfigurations\" />
     <None Remove="Data\Config\ServePartnerConfigurations\" />
-    <None Remove="Data\UserConfigurations\" />
+    <None Remove="Data\Config\UserConfigurations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\Config\EnrollmentConfigurations\" />
@@ -36,7 +36,7 @@
     <Folder Include="Data\Config\VoucherConfigurations\" />
     <Folder Include="Data\Config\ProofOfImpactConfigurations\" />
     <Folder Include="Data\Config\ServePartnerConfigurations\" />
-    <Folder Include="Data\UserConfigurations\" />
+    <Folder Include="Data\Config\UserConfigurations\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="TestingScaffold\InvolvemintContext.cs" />

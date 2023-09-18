@@ -33,6 +33,7 @@ namespace InvolveMINT.API.Core.ChangeMakerAggregate
     public Guid? HandleId { get; set; }
 
     public Guid? AddressId { get; set; }
+
   }
 }
 

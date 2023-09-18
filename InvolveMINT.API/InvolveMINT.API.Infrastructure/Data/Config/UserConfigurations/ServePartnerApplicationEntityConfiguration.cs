@@ -2,7 +2,7 @@ using InvolveMINT.API.Core.UserAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace InvolveMINT.API.Infrastructure.Data.UserConfigurations
+namespace InvolveMINT.API.Infrastructure.Data.Config.UserConfigurations
 {
   public class ServePartnerApplicationEntityConfiguration : IEntityTypeConfiguration<ServePartnerApplicationEntity>
   {
