@@ -68,8 +68,8 @@ namespace InvolveMINT.API.Infrastructure.Data.Config
           .HasDefaultValueSql("'private'::text")
           .HasColumnName("listingStatus")
           .HasConversion(
-            x => x.Value,
-            x => ProjectListingStatus.FromValue(x))
+            x => x.Name,
+            x => ProjectListingStatus.FromName(x, true))
           .IsRequired(); ;
 
       builder.Property(e => e.MaxChangeMakers)

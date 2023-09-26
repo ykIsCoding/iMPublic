@@ -84,8 +84,8 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ExchangePartnerConfiguratio
           .HasDefaultValueSql("'profile'::text")
           .HasColumnName("onboardingState")
           .HasConversion(
-            x => x.Value,
-            x => ExchangePartnerOnboardingState.FromValue(x))
+            x => x.Name,
+            x => ExchangePartnerOnboardingState.FromName(x, true))
           .IsRequired();
 
       builder.Property(e => e.Phone)

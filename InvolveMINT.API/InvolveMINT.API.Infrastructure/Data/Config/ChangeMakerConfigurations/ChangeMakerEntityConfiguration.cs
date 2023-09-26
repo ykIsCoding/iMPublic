@@ -57,8 +57,8 @@ public class ChangeMakerEntityConfiguration : IEntityTypeConfiguration<ChangeMak
     builder.Property(e => e.OnboardingState)
       .HasColumnName("onboardingState")
       .HasConversion(
-        x => x.Value,
-        x => ChangeMakerOnboardingState.FromValue(x))
+        x => x.Name,
+        x => ChangeMakerOnboardingState.FromName(x, true))
       .IsRequired();
 
     builder.Property(e => e.Phone)
