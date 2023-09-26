@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Enrollments\" />
+    <None Remove="Enrollments\Get\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enrollments\" />
+    <Folder Include="Enrollments\Get\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InvolveMINT.API.Core\InvolveMINT.API.Core.csproj" />
+  </ItemGroup>
 </Project>

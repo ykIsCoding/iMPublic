@@ -1,4 +1,5 @@
 using Ardalis.Specification;
+using InvolveMINT.API.Core.OfferAggregate;
 using InvolveMINT.API.Core.RequestAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -58,6 +59,9 @@ namespace InvolveMINT.API.Infrastructure.Data.Config
 
       builder.Property(e => e.ListingStatus)
           .HasDefaultValueSql("'private'::text")
+          .HasConversion(
+            x => x.Name,
+            x => RequestListingStatus.FromName(x, true))
           .HasColumnName("listingStatus");
 
       builder.Property(e => e.Name)

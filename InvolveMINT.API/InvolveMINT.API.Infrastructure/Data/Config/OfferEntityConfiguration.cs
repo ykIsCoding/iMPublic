@@ -55,12 +55,13 @@ namespace InvolveMINT.API.Infrastructure.Data.Config
           .HasColumnName("imagesFilePaths");
 
       builder.Property(e => e.ListingStatus)
-          .HasDefaultValueSql("'private'::text")
-          .HasColumnName("listingStatus")
-          .HasConversion(
-            x => x.Value,
-            x => OfferListingStatus.FromValue(x))
-          .IsRequired();
+        .HasColumnType("text")
+        .HasDefaultValueSql("'private'::text")
+        .HasColumnName("listingStatus")
+        .HasConversion(
+          x => x.Name,
+          x => OfferListingStatus.FromName(x, true))
+        .IsRequired();
 
       builder.Property(e => e.Name)
           .HasColumnType("character varying")

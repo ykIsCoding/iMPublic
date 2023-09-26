@@ -24,6 +24,7 @@
     <None Remove="ServePartnerAggregate\" />
     <None Remove="TransactionAggregate\" />
     <None Remove="AddressAggregate\" />
+    <None Remove="EnrollmentAggregate\Get\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ChangeMakerAggregate\" />
@@ -43,6 +44,7 @@
     <Folder Include="ServePartnerAggregate\" />
     <Folder Include="TransactionAggregate\" />
     <Folder Include="AddressAggregate\" />
+    <Folder Include="EnrollmentAggregate\Get\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InvolveMINT.API.SharedKernel\InvolveMINT.API.SharedKernel.csproj" />
