@@ -20,10 +20,12 @@ public class EnrollmentsController : ControllerBase
   }
 
   [HttpGet(Name = "GetEnrollmentByFilter")]
-  public async Task Get()
+  public async Task<List<EnrollmentEntity>> Get()
   {
     var test = await _repository.ListAsync();
     EnrollmentEntity? result = await _repository.GetByIdAsync(Guid.Parse("e0d31bd1-2d26-4a84-8399-5e10e3dba690"));
+
+    return test;
   }
 }
 

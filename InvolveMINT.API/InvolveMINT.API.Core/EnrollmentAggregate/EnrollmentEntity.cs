@@ -30,7 +30,7 @@ namespace InvolveMINT.API.Core.EnrollmentAggregate
 
     public Guid? ProjectId { get; set; }
 
-    public List<EnrollmentDocumentEntity> EnrollmentDocuments { get; set; } = new List<EnrollmentDocumentEntity>();
+    public virtual ICollection<EnrollmentDocumentEntity> EnrollmentDocuments { get; set; } = new List<EnrollmentDocumentEntity>();
   }
 }
 

@@ -58,6 +58,13 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.EnrollmentConfigurations
             id => id.ToString(),
             str => str == null ? null : Guid.Parse(str)
         );
+
+      builder.HasMany(x => x.EnrollmentDocuments)
+      .WithOne()
+      .HasForeignKey(x => x.EnrollmentId);
+
+      builder.Navigation(e => e.EnrollmentDocuments).AutoInclude();
+
     }
   }
 }
