@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using InvolveMINT.API.Core.EnrollmentAggregate.Get;
-using InvolveMINT.API.UseCases.Enrollments.Get;
 using InvolveMINT.API.Core.EnrollmentAggregate;
 using InvolveMINT.API.SharedKernel;
 
-namespace InvolveMINT.API.Controllers;
+namespace InvolveMINT.API.Enrollments;
 
 [ApiController]
 [Route("[controller]")]
@@ -20,12 +18,14 @@ public class EnrollmentsController : ControllerBase
   }
 
   [HttpGet(Name = "GetEnrollmentByFilter")]
-  public async Task<List<EnrollmentEntity>> Get()
+  public async Task<List<EnrollmentEntity>?> Get([FromQueryAttribute] EnrollmentQueryFilter filter)
   {
-    var test = await _repository.ListAsync();
-    EnrollmentEntity? result = await _repository.GetByIdAsync(Guid.Parse("e0d31bd1-2d26-4a84-8399-5e10e3dba690"));
-
-    return test;
+    /*todo validate the filter including
+      - One of the properties must be set with a non empty guid
+      - Enrollments access is limited to the change maker being able to see their own
+          and project admin being able to see enrollments for that project
+    */
+    return null;
   }
 }
 

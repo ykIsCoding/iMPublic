@@ -32,4 +32,10 @@
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Enrollments\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enrollments\" />
+  </ItemGroup>
 </Project>
