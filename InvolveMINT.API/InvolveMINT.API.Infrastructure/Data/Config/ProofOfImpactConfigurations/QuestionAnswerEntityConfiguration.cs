@@ -15,10 +15,6 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ProofOfImpactConfigurations
       builder.Property(e => e.Id)
         .HasColumnName("id")
         .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        )
         .IsRequired();
 
       builder.Property(e => e.Answer)
@@ -32,19 +28,11 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ProofOfImpactConfigurations
 
       builder.Property(e => e.PoiId)
         .HasColumnName("poiId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.QuestionId)
         .HasColumnName("questionId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
     }
   }
 }

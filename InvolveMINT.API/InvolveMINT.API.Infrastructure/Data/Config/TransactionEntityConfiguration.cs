@@ -16,10 +16,6 @@ namespace InvolveMINT.API.Infrastructure.Data.Config
       builder.Property(e => e.Id)
         .HasColumnName("id")
         .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        )
         .IsRequired();
 
       builder.Property(e => e.Amount).HasColumnName("amount");
@@ -38,51 +34,27 @@ namespace InvolveMINT.API.Infrastructure.Data.Config
 
       builder.Property(e => e.ReceiverChangeMakerId)
         .HasColumnName("receiverChangeMakerId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.ReceiverExchangePartnerId)
         .HasColumnName("receiverExchangePartnerId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.ReceiverServePartnerId)
         .HasColumnName("receiverServePartnerId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.SenderChangeMakerId)
         .HasColumnName("senderChangeMakerId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.SenderExchangePartnerId)
         .HasColumnName("senderExchangePartnerId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.SenderServePartnerId)
         .HasColumnName("senderServePartnerId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
     }
   }
 }

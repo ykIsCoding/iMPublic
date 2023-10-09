@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.ServePartnerAggregate
 {
-  public class ServePartnerEntity : EntityBase, IAggregateRoot
+  public class ServePartnerEntity : EntityBase<string>, IAggregateRoot
   {
     public ServePartnerEntity()
     {
@@ -28,9 +28,9 @@ namespace InvolveMINT.API.Core.ServePartnerAggregate
 
     public DateTime DateCreated { get; set; }
 
-    public Guid? HandleId { get; set; }
+    public string? HandleId { get; set; }
 
-    public Guid? AddressId { get; set; }
+    public string? AddressId { get; set; }
   }
 }
 

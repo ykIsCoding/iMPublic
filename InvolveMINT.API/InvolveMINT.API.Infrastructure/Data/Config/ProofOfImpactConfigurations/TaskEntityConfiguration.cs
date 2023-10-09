@@ -16,19 +16,11 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ProofOfImpactConfigurations
       builder.Property(e => e.Id)
         .HasColumnName("id")
         .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        )
         .IsRequired();
 
       builder.Property(e => e.PoiId)
         .HasColumnName("poiId")
         .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        )
         .IsRequired();
 
     }

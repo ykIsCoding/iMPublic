@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.UserAggregate
 {
-  public class ExchangePartnerApplicationEntity :  EntityBase
+  public class ExchangePartnerApplicationEntity :  EntityBase<string>
   {
     public ExchangePartnerApplicationEntity()
     {
@@ -20,11 +20,11 @@ namespace InvolveMINT.API.Core.UserAggregate
 
     public DateTime DateCreated { get; set; }
 
-    public Guid? UserId { get; set; }
+    public string? UserId { get; set; }
 
-    public Guid? HandleId { get; set; }
+    public string? HandleId { get; set; }
 
-    public Guid? AddressId { get; set; }
+    public string? AddressId { get; set; }
   }
 }
 

@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.OfferAggregate
 {
-  public class OfferEntity : EntityBase, IAggregateRoot
+  public class OfferEntity : EntityBase<string>, IAggregateRoot
   {
     public OfferEntity()
     {
@@ -22,11 +22,11 @@ namespace InvolveMINT.API.Core.OfferAggregate
 
     public DateTime DateCreated { get; set; }
 
-    public Guid? ChangeMakerId { get; set; }
+    public string? ChangeMakerId { get; set; }
 
-    public Guid? ExchangePartnerId { get; set; }
+    public string? ExchangePartnerId { get; set; }
 
-    public Guid? ServePartnerId { get; set; }
+    public string? ServePartnerId { get; set; }
   }
 }
 

@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.QuestionAggregate
 {
-  public class QuestionEntity : EntityBase, IAggregateRoot
+  public class QuestionEntity : EntityBase<string>, IAggregateRoot
   {
     public QuestionEntity()
     {
@@ -10,7 +10,7 @@ namespace InvolveMINT.API.Core.QuestionAggregate
 
     public string Text { get; set; } = null!;
 
-    public Guid? ProjectId { get; set; }
+    public string? ProjectId { get; set; }
   }
 }
 

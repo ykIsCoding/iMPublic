@@ -15,19 +15,11 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.UserConfigurations
       builder.Property(e => e.Id)
         .HasColumnName("id")
         .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        )
         .IsRequired();
 
       builder.Property(e => e.AddressId)
         .HasColumnName("addressId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.DateCreated)
           .HasDefaultValueSql("'2023-09-12 22:45:56.956236'::timestamp without time zone")
@@ -44,11 +36,7 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.UserConfigurations
 
       builder.Property(e => e.HandleId)
         .HasColumnName("handleId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.Name)
           .HasColumnType("character varying")
@@ -60,11 +48,7 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.UserConfigurations
 
       builder.Property(e => e.UserId)
         .HasColumnName("userId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.Website)
           .HasColumnType("character varying")

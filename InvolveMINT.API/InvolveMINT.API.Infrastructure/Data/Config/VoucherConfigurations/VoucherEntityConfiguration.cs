@@ -15,10 +15,6 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.VoucherConfigurations
       builder.Property(e => e.Id)
         .HasColumnName("id")
         .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        )
         .IsRequired();
 
 
@@ -26,19 +22,11 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.VoucherConfigurations
 
       builder.Property(e => e.BuyerId)
         .HasColumnName("buyerId")
-        .HasColumnType("text")
-      .HasConversion(
-          id => id.ToString(),
-          str => str == null ? null : Guid.Parse(str)
-      );
+        .HasColumnType("text");
 
       builder.Property(e => e.ChangeMakerReceiverId)
         .HasColumnName("changeMakerReceiverId")
-        .HasColumnType("text")
-      .HasConversion(
-          id => id.ToString(),
-          str => str == null ? null : Guid.Parse(str)
-      ); ;
+        .HasColumnType("text");
 
       builder.Property(e => e.Code)
           .HasColumnType("character varying")
@@ -66,27 +54,15 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.VoucherConfigurations
 
       builder.Property(e => e.ExchangePartnerReceiverId)
         .HasColumnName("exchangePartnerReceiverId")
-        .HasColumnType("text")
-      .HasConversion(
-          id => id.ToString(),
-          str => str == null ? null : Guid.Parse(str)
-      );
+        .HasColumnType("text");
 
       builder.Property(e => e.SellerId)
         .HasColumnName("sellerId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.ServePartnerReceiverId)
         .HasColumnName("servePartnerReceiverId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
     }
   }
 }

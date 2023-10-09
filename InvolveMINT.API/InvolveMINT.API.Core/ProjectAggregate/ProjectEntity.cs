@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.ProjectAggregate
 {
-  public class ProjectEntity : EntityBase, IAggregateRoot
+  public class ProjectEntity : EntityBase<string>, IAggregateRoot
   {
     public ProjectEntity()
     {
@@ -42,9 +42,9 @@ namespace InvolveMINT.API.Core.ProjectAggregate
 
     public string? CustomWaiverFilePath { get; set; }
 
-    public Guid AddressId { get; set; }
+    public string AddressId { get; set; }
 
-    public Guid? ServePartnerId { get; set; }
+    public string? ServePartnerId { get; set; }
   }
 }
 

@@ -3,7 +3,7 @@ using InvolveMINT.API.SharedKernel;
 namespace InvolveMINT.API.Core.ChangeMakerAggregate
 {
 
-  public class ChangeMakerEntity : EntityBase, IAggregateRoot
+  public class ChangeMakerEntity : EntityBase<string>, IAggregateRoot
   {
     public ChangeMakerEntity(string firstName, string lastName, string profilePicFilePath, string bio, string phone, ChangeMakerOnboardingState onboardingState)
     {
@@ -30,9 +30,9 @@ namespace InvolveMINT.API.Core.ChangeMakerAggregate
 
     public DateTime DateCreated { get; set; }
 
-    public Guid? HandleId { get; set; }
+    public string? HandleId { get; set; }
 
-    public Guid? AddressId { get; set; }
+    public string? AddressId { get; set; }
 
   }
 }

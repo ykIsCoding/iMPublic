@@ -6,9 +6,9 @@ namespace InvolveMINT.API.SharedKernel;
 /// <summary>
 /// A base class for DDD Entities. Includes support for domain events dispatched post-persistence.
 /// </summary>
-public abstract class EntityBase
+public abstract class EntityBase<TId>
 {
-  public Guid Id { get; set; }
+  public TId? Id { get; set; }
 
   private List<DomainEventBase> _domainEvents = new();
   [NotMapped]

@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.ProofOfImpactAggregate
 {
-  public class QuestionAnswerEntity : EntityBase
+  public class QuestionAnswerEntity : EntityBase<string>
   {
     public QuestionAnswerEntity()
     {
@@ -12,9 +12,9 @@ namespace InvolveMINT.API.Core.ProofOfImpactAggregate
 
     public DateTime DateAnswered { get; set; }
 
-    public Guid? QuestionId { get; set; }
+    public string? QuestionId { get; set; }
 
-    public Guid? PoiId { get; set; }
+    public string? PoiId { get; set; }
   }
 }
 

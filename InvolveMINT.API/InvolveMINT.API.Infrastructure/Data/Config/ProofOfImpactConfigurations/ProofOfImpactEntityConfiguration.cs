@@ -15,10 +15,6 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ProofOfImpactConfigurations
       builder.Property(e => e.Id)
         .HasColumnName("id")
         .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        )
         .IsRequired();
 
       builder.Property(e => e.DateApproved)
@@ -48,11 +44,7 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ProofOfImpactConfigurations
 
       builder.Property(e => e.EnrollmentId)
         .HasColumnName("enrollmentId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.ImagesFilePaths)
           .HasDefaultValueSql("'{}'::text[]")

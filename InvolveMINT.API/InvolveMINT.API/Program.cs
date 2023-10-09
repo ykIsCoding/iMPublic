@@ -3,6 +3,8 @@ using Serilog;
 using Microsoft.EntityFrameworkCore;
 using Ardalis.ListStartupServices;
 using InvolveMINT.API.SharedKernel;
+using InvolveMINT.API.Core;
+using InvolveMINT.API.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,8 +41,9 @@ builder.Services.Configure<ServiceConfig>(config =>
   config.Path = "/listservices";
 });
 
+builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 builder.Services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
-
+builder.Services.AddScoped<IEnrollInProjectService, EnrollInProjectService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

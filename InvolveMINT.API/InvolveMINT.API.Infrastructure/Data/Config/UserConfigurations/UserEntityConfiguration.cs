@@ -15,10 +15,6 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.UserConfigurations
       builder.Property(e => e.Id)
         .HasColumnName("id")
         .HasColumnType("text")
-      .HasConversion(
-          id => id.ToString(),
-          str => Guid.Parse(str)
-      )
       .IsRequired();
 
       builder.Property(e => e.ActivationHash)
@@ -31,11 +27,7 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.UserConfigurations
 
       builder.Property(e => e.ChangeMakerId)
         .HasColumnName("changeMakerId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.DateCreated)
           .HasDefaultValueSql("'2023-09-12 22:45:56.956236'::timestamp without time zone")

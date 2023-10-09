@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.ProjectDocumentAggregate
 {
-  public class ProjectDocumentEntity : EntityBase, IAggregateRoot
+  public class ProjectDocumentEntity : EntityBase<string>, IAggregateRoot
   {
     public ProjectDocumentEntity()
     {
@@ -14,7 +14,7 @@ namespace InvolveMINT.API.Core.ProjectDocumentAggregate
 
     public string InfoUrl { get; set; } = null!;
 
-    public Guid? ProjectId { get; set; }
+    public string? ProjectId { get; set; }
   }
 }
 

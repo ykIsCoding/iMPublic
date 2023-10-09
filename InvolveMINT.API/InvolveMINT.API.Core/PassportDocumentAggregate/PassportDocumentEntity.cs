@@ -3,7 +3,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.PassportDocumentAggregate
 {
-  public class PassportDocumentEntity : EntityBase, IAggregateRoot
+  public class PassportDocumentEntity : EntityBase<string>, IAggregateRoot
   {
     public PassportDocumentEntity(string filePath, string name, DateTime uploadedDate)
     {
@@ -15,7 +15,7 @@ namespace InvolveMINT.API.Core.PassportDocumentAggregate
     public string FilePath { get; set; }
     public string Name { get; set; }
     public DateTime UploadedDate { get; set; }
-    public Guid? ChangeMakerId { get; set; }
+    public string? ChangeMakerId { get; set; }
 
 
   }

@@ -14,11 +14,7 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ExchangePartnerConfiguratio
 
       builder.Property(e => e.Id)
         .HasColumnName("id")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
       builder.Property(e => e.ReceivedThisMonth).HasColumnName("receivedThisMonth");
     }
   }

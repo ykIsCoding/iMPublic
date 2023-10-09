@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.TransactionAggregate
 {
-  public class TransactionEntity : EntityBase, IAggregateRoot
+  public class TransactionEntity : EntityBase<string>, IAggregateRoot
   {
     public TransactionEntity()
     {
@@ -16,17 +16,17 @@ namespace InvolveMINT.API.Core.TransactionAggregate
 
     public string? EpAudibleCode { get; set; }
 
-    public Guid? SenderChangeMakerId { get; set; }
+    public string? SenderChangeMakerId { get; set; }
 
-    public Guid? SenderServePartnerId { get; set; }
+    public string? SenderServePartnerId { get; set; }
 
-    public Guid? SenderExchangePartnerId { get; set; }
+    public string? SenderExchangePartnerId { get; set; }
 
-    public Guid? ReceiverChangeMakerId { get; set; }
+    public string? ReceiverChangeMakerId { get; set; }
 
-    public Guid? ReceiverServePartnerId { get; set; }
+    public string? ReceiverServePartnerId { get; set; }
 
-    public Guid? ReceiverExchangePartnerId { get; set; }
+    public string? ReceiverExchangePartnerId { get; set; }
   }
 }
 

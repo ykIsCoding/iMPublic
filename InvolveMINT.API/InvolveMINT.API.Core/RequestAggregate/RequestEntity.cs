@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.RequestAggregate
 {
-  public class RequestEntity : EntityBase, IAggregateRoot
+  public class RequestEntity : EntityBase<string>, IAggregateRoot
   {
     public RequestEntity()
     {
@@ -24,11 +24,11 @@ namespace InvolveMINT.API.Core.RequestAggregate
 
     public DateTime DateCreated { get; set; }
 
-    public Guid? ChangeMakerId { get; set; }
+    public string? ChangeMakerId { get; set; }
 
-    public Guid? ExchangePartnerId { get; set; }
+    public string? ExchangePartnerId { get; set; }
 
-    public Guid? ServePartnerId { get; set; }
+    public string? ServePartnerId { get; set; }
   }
 }
 

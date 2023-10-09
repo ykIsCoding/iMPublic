@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.ExchangePartnerAggregate
 {
-  public class ExchangeAdminEntity : EntityBase
+  public class ExchangeAdminEntity : EntityBase<string>
   {
     public ExchangeAdminEntity()
     {
@@ -12,9 +12,9 @@ namespace InvolveMINT.API.Core.ExchangePartnerAggregate
 
     public bool SuperAdmin { get; set; }
 
-    public Guid? UserId { get; set; }
+    public string? UserId { get; set; }
 
-    public Guid? ExchangePartnerId { get; set; }
+    public string? ExchangePartnerId { get; set; }
   }
 }
 

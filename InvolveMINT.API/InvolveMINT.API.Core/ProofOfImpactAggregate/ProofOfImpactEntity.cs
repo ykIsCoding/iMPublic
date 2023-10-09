@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.ProofOfImpactAggregate
 {
-  public class ProofOfImpactEntity : EntityBase, IAggregateRoot
+  public class ProofOfImpactEntity : EntityBase<string>, IAggregateRoot
   {
     public ProofOfImpactEntity()
     {
@@ -30,7 +30,7 @@ namespace InvolveMINT.API.Core.ProofOfImpactAggregate
 
     public double? Latitude { get; set; }
 
-    public Guid? EnrollmentId { get; set; }
+    public string? EnrollmentId { get; set; }
   }
 }
 

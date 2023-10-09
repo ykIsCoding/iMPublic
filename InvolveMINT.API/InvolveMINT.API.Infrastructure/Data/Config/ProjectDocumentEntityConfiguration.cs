@@ -15,10 +15,6 @@ namespace InvolveMINT.API.Infrastructure.Data.Config
       builder.Property(e => e.Id)
         .HasColumnName("id")
         .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        )
         .IsRequired();
 
       builder.Property(e => e.Description)
@@ -31,11 +27,7 @@ namespace InvolveMINT.API.Infrastructure.Data.Config
 
       builder.Property(e => e.ProjectId)
         .HasColumnName("projectId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.Title)
         .HasColumnType("character varying")

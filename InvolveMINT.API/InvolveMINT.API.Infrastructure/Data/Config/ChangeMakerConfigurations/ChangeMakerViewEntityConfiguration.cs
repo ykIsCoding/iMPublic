@@ -15,11 +15,7 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ChangeMakerConfigurations
       builder.Property(e => e.EarnedCredits).HasColumnName("earnedCredits");
       builder.Property(e => e.Id)
         .HasColumnName("id")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
       builder.Property(e => e.PoiApproved).HasColumnName("poiApproved");
       builder.Property(e => e.SecondsCompleted).HasColumnName("secondsCompleted");
       builder.Property(e => e.SpentCredits).HasColumnName("spentCredits");

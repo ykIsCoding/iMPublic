@@ -15,19 +15,11 @@ namespace InvolveMINT.API.Infrastructure.Data.Config
       builder.Property(e => e.Id)
         .HasColumnName("id")
         .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        )
         .IsRequired();
 
       builder.Property(e => e.AddressId)
         .HasColumnName("addressId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.City)
           .HasDefaultValueSql("''::character varying")
@@ -95,11 +87,7 @@ namespace InvolveMINT.API.Infrastructure.Data.Config
 
       builder.Property(e => e.ServePartnerId)
         .HasColumnName("servePartnerId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.StartDate)
           .HasColumnType("timestamp without time zone")

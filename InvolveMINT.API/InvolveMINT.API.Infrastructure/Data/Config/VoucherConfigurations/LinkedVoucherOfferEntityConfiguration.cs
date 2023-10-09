@@ -16,28 +16,16 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.VoucherConfigurations
       builder.Property(e => e.Id)
         .HasColumnName("id")
         .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        )
         .IsRequired();
 
       builder.Property(e => e.OfferId)
         .HasColumnName("offerId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.Quantity).HasColumnName("quantity");
       builder.Property(e => e.VoucherId)
         .HasColumnName("voucherId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
     }
   }
 }

@@ -2,13 +2,13 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.ProofOfImpactAggregate
 {
-  public class TaskEntity : EntityBase
+  public class TaskEntity : EntityBase<string>
   {
     public TaskEntity()
     {
     }
 
-    public Guid PoiId { get; set; }
+    public string PoiId { get; set; }
   }
 }
 

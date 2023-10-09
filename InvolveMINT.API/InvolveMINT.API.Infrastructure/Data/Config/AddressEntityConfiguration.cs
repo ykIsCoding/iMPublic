@@ -16,10 +16,6 @@ namespace InvolveMINT.API.Infrastructure.Data.Config
       builder.Property(e => e.Id)
         .HasColumnName("id")
           .HasColumnType("text")
-          .HasConversion(
-              id => id.ToString(),
-              str => Guid.Parse(str)
-          )
           .IsRequired();
 
       builder.Property(e => e.Address1)

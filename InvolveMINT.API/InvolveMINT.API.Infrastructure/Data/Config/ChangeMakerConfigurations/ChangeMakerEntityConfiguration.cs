@@ -15,19 +15,11 @@ public class ChangeMakerEntityConfiguration : IEntityTypeConfiguration<ChangeMak
     builder.Property(e => e.Id)
       .HasColumnName("id")
       .HasColumnType("text")
-      .HasConversion(
-          id => id.ToString(),
-          str => Guid.Parse(str)
-      )
       .IsRequired();
 
     builder.Property(e => e.AddressId)
       .HasColumnName("addressId")
-      .HasColumnType("text")
-      .HasConversion(
-          id => id.ToString(),
-          str => str == null ? null : Guid.Parse(str)
-      );
+      .HasColumnType("text");
 
     builder.Property(e => e.Bio)
     .HasColumnType("character varying")
@@ -44,11 +36,7 @@ public class ChangeMakerEntityConfiguration : IEntityTypeConfiguration<ChangeMak
 
     builder.Property(e => e.HandleId)
       .HasColumnName("handleId")
-      .HasColumnType("text")
-      .HasConversion(
-          id => id.ToString(),
-          str => str == null ? null : Guid.Parse(str)
-      );
+      .HasColumnType("text");
 
     builder.Property(e => e.LastName)
         .HasColumnType("character varying")

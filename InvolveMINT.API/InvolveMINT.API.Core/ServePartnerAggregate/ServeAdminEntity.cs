@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.ServePartnerAggregate
 {
-  public class ServeAdminEntity : EntityBase
+  public class ServeAdminEntity : EntityBase<string>
   {
     public ServeAdminEntity()
     {
@@ -12,9 +12,9 @@ namespace InvolveMINT.API.Core.ServePartnerAggregate
 
     public bool SuperAdmin { get; set; }
 
-    public Guid? UserId { get; set; }
+    public string? UserId { get; set; }
 
-    public Guid? ServePartnerId { get; set; }
+    public string? ServePartnerId { get; set; }
   }
 }
 

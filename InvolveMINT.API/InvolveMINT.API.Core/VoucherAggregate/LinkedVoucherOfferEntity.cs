@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.VoucherAggregate
 {
-  public class LinkedVoucherOfferEntity : EntityBase
+  public class LinkedVoucherOfferEntity : EntityBase<string>
   {
     public LinkedVoucherOfferEntity()
     {
@@ -10,9 +10,9 @@ namespace InvolveMINT.API.Core.VoucherAggregate
 
     public int Quantity { get; set; }
 
-    public Guid? VoucherId { get; set; }
+    public string? VoucherId { get; set; }
 
-    public Guid? OfferId { get; set; }
+    public string? OfferId { get; set; }
   }
 }
 

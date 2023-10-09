@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.AddressAggregate
 {
-  public class AddressEntity : EntityBase, IAggregateRoot
+  public class AddressEntity : EntityBase<string>, IAggregateRoot
   {
     public AddressEntity(string address1, string address2, string address3, string city, string state, string zip, string country = "United States")
     {

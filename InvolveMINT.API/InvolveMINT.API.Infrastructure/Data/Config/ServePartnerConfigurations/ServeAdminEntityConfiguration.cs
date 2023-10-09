@@ -15,10 +15,6 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ServePartnerConfigurations
       builder.Property(e => e.Id)
         .HasColumnName("id")
         .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        )
         .IsRequired();
 
       builder.Property(e => e.DatePermitted)
@@ -27,22 +23,14 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ServePartnerConfigurations
 
       builder.Property(e => e.ServePartnerId)
         .HasColumnName("servePartnerId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.SuperAdmin)
         .HasColumnName("superAdmin");
 
       builder.Property(e => e.UserId)
         .HasColumnName("userId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
     }
   }
 }

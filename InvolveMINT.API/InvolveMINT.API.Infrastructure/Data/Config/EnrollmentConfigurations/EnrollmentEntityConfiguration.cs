@@ -15,21 +15,13 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.EnrollmentConfigurations
       builder.Property(e => e.Id)
           .HasColumnName("id")
           .HasColumnType("text")
-          .HasConversion(
-              id => id.ToString(),
-              str => Guid.Parse(str)
-        )
         .IsRequired();
 
         builder.Property(e => e.AcceptedWaiver).HasColumnName("acceptedWaiver");
 
         builder.Property(e => e.ChangeMakerId)
         .HasColumnName("changeMakerId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
         builder.Property(e => e.DateApplied)
             .HasColumnType("timestamp without time zone")
@@ -53,11 +45,7 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.EnrollmentConfigurations
 
         builder.Property(e => e.ProjectId)
         .HasColumnName("projectId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.HasMany(x => x.EnrollmentDocuments)
       .WithOne()

@@ -1,7 +1,7 @@
 using InvolveMINT.API.SharedKernel;
 namespace InvolveMINT.API.Core.CreditAggregate
 {
-  public class CreditEntity : EntityBase, IAggregateRoot
+  public class CreditEntity : EntityBase<string>, IAggregateRoot
   {
     public CreditEntity()
     {
@@ -13,13 +13,13 @@ namespace InvolveMINT.API.Core.CreditAggregate
 
     public bool Escrow { get; set; }
 
-    public Guid? PoiId { get; set; }
+    public string? PoiId { get; set; }
 
-    public Guid? ChangeMakerId { get; set; }
+    public string? ChangeMakerId { get; set; }
 
-    public Guid? ServePartnerId { get; set; }
+    public string? ServePartnerId { get; set; }
 
-    public Guid? ExchangePartnerId { get; set; }
+    public string? ExchangePartnerId { get; set; }
   }
 }
 

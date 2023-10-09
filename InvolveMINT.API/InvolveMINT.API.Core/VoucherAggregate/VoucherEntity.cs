@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.VoucherAggregate
 {
-  public class VoucherEntity : EntityBase, IAggregateRoot
+  public class VoucherEntity : EntityBase<string>, IAggregateRoot
   {
     public VoucherEntity()
     {
@@ -14,7 +14,7 @@ namespace InvolveMINT.API.Core.VoucherAggregate
 
     public DateTime DateCreated { get; set; }
 
-    public Guid? BuyerId { get; set; }
+    public string? BuyerId { get; set; }
 
     public DateTime? DateExpires { get; set; }
 
@@ -24,13 +24,13 @@ namespace InvolveMINT.API.Core.VoucherAggregate
 
     public DateTime? DateRedeemed { get; set; }
 
-    public Guid SellerId { get; set; }
+    public string SellerId { get; set; }
 
-    public Guid? ChangeMakerReceiverId { get; set; }
+    public string? ChangeMakerReceiverId { get; set; }
 
-    public Guid? ServePartnerReceiverId { get; set; }
+    public string? ServePartnerReceiverId { get; set; }
 
-    public Guid? ExchangePartnerReceiverId { get; set; }
+    public string? ExchangePartnerReceiverId { get; set; }
   }
 }
 

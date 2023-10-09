@@ -14,19 +14,11 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ExchangePartnerConfiguratio
       builder.Property(e => e.Id)
         .HasColumnName("id")
         .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        )
         .IsRequired(); ;
 
       builder.Property(e => e.AddressId)
         .HasColumnName("addressId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.Budget).HasColumnName("budget");
 
@@ -53,11 +45,7 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ExchangePartnerConfiguratio
 
       builder.Property(e => e.HandleId)
         .HasColumnName("handleId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => str == null ? null : Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.ImagesFilePaths)
           .HasDefaultValueSql("'{}'::text[]")

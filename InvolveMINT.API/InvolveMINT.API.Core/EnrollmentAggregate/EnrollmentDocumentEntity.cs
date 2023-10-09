@@ -4,18 +4,18 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.EnrollmentAggregate
 {
-  public class EnrollmentDocumentEntity : EntityBase, IAggregateRoot
+  public class EnrollmentDocumentEntity : EntityBase<string>, IAggregateRoot
   {
-    public EnrollmentDocumentEntity(Guid passportDocumentId, Guid projectDocumentId, Guid enrollmentId)
+    private EnrollmentDocumentEntity(string passportDocumentId, string projectDocumentId, string enrollmentId)
     {
       PassportDocumentId = passportDocumentId;
       ProjectDocumentId = projectDocumentId;
       EnrollmentId = enrollmentId;
     }
 
-    public Guid PassportDocumentId { get; set; }
-    public Guid ProjectDocumentId { get; set; }
-    public Guid EnrollmentId { get; set; }
+    public string PassportDocumentId { get; set; }
+    public string ProjectDocumentId { get; set; }
+    public string EnrollmentId { get; set; }
   }
 }
 

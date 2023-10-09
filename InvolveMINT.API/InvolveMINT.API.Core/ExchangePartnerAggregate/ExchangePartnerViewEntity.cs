@@ -6,7 +6,7 @@ namespace InvolveMINT.API.Core.ExchangePartnerAggregate
     {
     }
 
-    public Guid? Id { get; set; }
+    public string? Id { get; set; }
 
     public int? ReceivedThisMonth { get; set; }
   }

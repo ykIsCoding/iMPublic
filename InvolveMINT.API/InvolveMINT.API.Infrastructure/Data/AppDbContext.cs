@@ -48,7 +48,7 @@ public class AppDbContext : DbContext
     //if (_dispatcher == null) return result;
 
     //// dispatch events only if save was successful
-    //var entitiesWithEvents = ChangeTracker.Entries<EntityBase>()
+    //var entitiesWithEvents = ChangeTracker.Entries<EntityBase<string>,string>>()
     //    .Select(e => e.Entity)
     //    .Where(e => e.DomainEvents.Any())
     //    .ToArray();

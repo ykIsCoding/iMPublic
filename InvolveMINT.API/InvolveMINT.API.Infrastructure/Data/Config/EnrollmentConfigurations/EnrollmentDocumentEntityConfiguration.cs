@@ -13,34 +13,18 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.EnrollmentConfigurations
       builder.Property(e => e.Id)
           .HasColumnName("id")
           .HasColumnType("text")
-          .HasConversion(
-              id => id.ToString(),
-              str => Guid.Parse(str)
-          )
           .IsRequired();
 
       // Define relationships with Guid IDs
       builder.Property(e => e.PassportDocumentId)
         .HasColumnName("passportDocumentId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       builder.Property(e => e.ProjectDocumentId).HasColumnName("projectDocumentId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        ); ;
+        .HasColumnType("text");
 
       builder.Property(e => e.EnrollmentId).HasColumnName("enrollmentId")
-        .HasColumnType("text")
-        .HasConversion(
-            id => id.ToString(),
-            str => Guid.Parse(str)
-        );
+        .HasColumnType("text");
 
       // Configure any other specific entity configurations here
     }

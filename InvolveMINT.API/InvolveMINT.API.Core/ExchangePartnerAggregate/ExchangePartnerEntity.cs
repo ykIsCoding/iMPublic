@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.ExchangePartnerAggregate
 {
-  public class ExchangePartnerEntity : EntityBase, IAggregateRoot
+  public class ExchangePartnerEntity : EntityBase<string>, IAggregateRoot
   {
     public ExchangePartnerEntity()
     {
@@ -38,9 +38,9 @@ namespace InvolveMINT.API.Core.ExchangePartnerAggregate
 
     public ExchangePartnerOnboardingState OnboardingState { get; set; } = null!;
 
-    public Guid? HandleId { get; set; }
+    public string? HandleId { get; set; }
 
-    public Guid? AddressId { get; set; }
+    public string? AddressId { get; set; }
 
     public ExchangeAdminEntity? ExchangeAdmin { get; set; }
   }

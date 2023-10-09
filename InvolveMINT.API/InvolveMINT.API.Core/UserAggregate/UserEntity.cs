@@ -2,7 +2,7 @@ using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.UserAggregate
 {
-  public class UserEntity : EntityBase, IAggregateRoot
+  public class UserEntity : EntityBase<string>, IAggregateRoot
   {
     public UserEntity(string passwordHash, string salt, DateTime dateCreated, DateTime? dateLastLoggedIn, bool active, string activationHash, string forgotPasswordHash, bool? joyride, bool baAdmin)
     {
@@ -35,7 +35,7 @@ namespace InvolveMINT.API.Core.UserAggregate
 
     public bool BaAdmin { get; set; }
 
-    public Guid? ChangeMakerId { get; set; }
+    public string? ChangeMakerId { get; set; }
   }
 }
 

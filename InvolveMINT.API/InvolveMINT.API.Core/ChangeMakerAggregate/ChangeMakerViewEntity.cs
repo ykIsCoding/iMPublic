@@ -7,7 +7,7 @@ namespace InvolveMINT.API.Core.ChangeMakerAggregate
     {
     }
 
-    public Guid? Id { get; set; }
+    public string? Id { get; set; }
 
     public int? PoiApproved { get; set; }
 
