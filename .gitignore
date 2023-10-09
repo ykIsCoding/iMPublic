@@ -47,3 +47,5 @@ gcp-api-key-prod.json
 
 log*.txt
 log*.json
+
+InvolveMINT.API/InvolveMINT.API/appsettings*.json
