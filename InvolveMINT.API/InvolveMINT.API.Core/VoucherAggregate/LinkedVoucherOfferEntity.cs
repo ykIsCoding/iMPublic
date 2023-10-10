@@ -4,7 +4,7 @@ namespace InvolveMINT.API.Core.VoucherAggregate
 {
   public class LinkedVoucherOfferEntity : EntityBase<string>
   {
-    public LinkedVoucherOfferEntity()
+    private LinkedVoucherOfferEntity()
     {
     }
 

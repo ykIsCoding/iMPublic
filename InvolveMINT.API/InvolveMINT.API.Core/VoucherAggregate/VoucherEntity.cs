@@ -4,7 +4,7 @@ namespace InvolveMINT.API.Core.VoucherAggregate
 {
   public class VoucherEntity : EntityBase<string>, IAggregateRoot
   {
-    public VoucherEntity()
+    private VoucherEntity()
     {
     }
 

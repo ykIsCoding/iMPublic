@@ -4,7 +4,7 @@ namespace InvolveMINT.API.Core.ServePartnerAggregate
 {
   public class ServePartnerEntity : EntityBase<string>, IAggregateRoot
   {
-    public ServePartnerEntity()
+    private ServePartnerEntity()
     {
     }
 

@@ -2,7 +2,7 @@ namespace InvolveMINT.API.Core.ExchangePartnerAggregate
 {
   public class ExchangePartnerViewEntity
   {
-    public ExchangePartnerViewEntity()
+    private ExchangePartnerViewEntity()
     {
     }
 

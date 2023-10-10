@@ -1,4 +1,4 @@
-using InvolveMINT.API.Core.ProofOfImpactAggregate;
+using InvolveMINT.API.Core.EnrollmentAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -57,6 +57,18 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ProofOfImpactConfigurations
       builder.Property(e => e.PausedTimes).HasColumnName("pausedTimes");
 
       builder.Property(e => e.ResumedTimes).HasColumnName("resumedTimes");
+
+       builder.HasMany(x => x.Tasks)
+      .WithOne()
+      .HasForeignKey(x => x.PoiId);
+
+      builder.Navigation(e => e.Tasks).AutoInclude();
+
+       builder.HasMany(x => x.QuestionAnswers)
+      .WithOne()
+      .HasForeignKey(x => x.PoiId);
+
+      builder.Navigation(e => e.QuestionAnswers).AutoInclude();
     }
   }
 }

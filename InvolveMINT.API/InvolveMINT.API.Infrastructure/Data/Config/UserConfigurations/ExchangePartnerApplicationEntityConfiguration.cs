@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using InvolveMINT.API.Core.UserAggregate;
+using InvolveMINT.API.Core.ExchangePartnerAggregate;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.UserConfigurations
 {

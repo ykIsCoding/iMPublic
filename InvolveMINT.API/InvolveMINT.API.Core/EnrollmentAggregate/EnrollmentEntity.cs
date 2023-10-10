@@ -13,6 +13,7 @@ namespace InvolveMINT.API.Core.EnrollmentAggregate
     public string? ChangeMakerId { get; set; }
     public string? ProjectId { get; set; }
     public virtual ICollection<EnrollmentDocumentEntity> EnrollmentDocuments { get; set; } = new List<EnrollmentDocumentEntity>();
+    public virtual ICollection<ProofOfImpactEntity> POIs { get; set; } = new List<ProofOfImpactEntity>();
 
     private EnrollmentEntity()
     {

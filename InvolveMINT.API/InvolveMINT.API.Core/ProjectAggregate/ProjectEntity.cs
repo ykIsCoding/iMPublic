@@ -4,7 +4,7 @@ namespace InvolveMINT.API.Core.ProjectAggregate
 {
   public class ProjectEntity : EntityBase<string>, IAggregateRoot
   {
-    public ProjectEntity()
+    private ProjectEntity()
     {
     }
 
@@ -45,6 +45,10 @@ namespace InvolveMINT.API.Core.ProjectAggregate
     public string AddressId { get; set; }
 
     public string? ServePartnerId { get; set; }
+
+    public virtual ICollection<QuestionEntity> Questions { get;  set; }
+
+    public virtual ICollection<ProjectDocumentEntity> Documents { get; set; }
   }
 }
 

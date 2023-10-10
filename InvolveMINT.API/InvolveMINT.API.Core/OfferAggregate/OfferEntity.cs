@@ -4,7 +4,7 @@ namespace InvolveMINT.API.Core.OfferAggregate
 {
   public class OfferEntity : EntityBase<string>, IAggregateRoot
   {
-    public OfferEntity()
+    private OfferEntity()
     {
     }
 

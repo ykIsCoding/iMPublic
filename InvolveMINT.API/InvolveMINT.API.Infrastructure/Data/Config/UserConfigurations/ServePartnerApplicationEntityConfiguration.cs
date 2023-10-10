@@ -1,4 +1,4 @@
-using InvolveMINT.API.Core.UserAggregate;
+using InvolveMINT.API.Core.ServePartnerAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

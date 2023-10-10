@@ -4,7 +4,7 @@ namespace InvolveMINT.API.Core.ExchangePartnerAggregate
 {
   public class ExchangeAdminEntity : EntityBase<string>
   {
-    public ExchangeAdminEntity()
+    private ExchangeAdminEntity()
     {
     }
 

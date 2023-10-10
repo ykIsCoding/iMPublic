@@ -11,6 +11,7 @@
     <None Remove="Enrollments\Get\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Enrollments/EnrollInProject/" />
     <Folder Include="Enrollments\" />
     <Folder Include="Enrollments\Get\" />
   </ItemGroup>

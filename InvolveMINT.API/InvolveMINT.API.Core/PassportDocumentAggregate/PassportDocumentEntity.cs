@@ -5,11 +5,8 @@ namespace InvolveMINT.API.Core.PassportDocumentAggregate
 {
   public class PassportDocumentEntity : EntityBase<string>, IAggregateRoot
   {
-    public PassportDocumentEntity(string filePath, string name, DateTime uploadedDate)
+    private PassportDocumentEntity()
     {
-      FilePath = filePath;
-      Name = name;
-      UploadedDate = uploadedDate;
     }
 
     public string FilePath { get; set; }

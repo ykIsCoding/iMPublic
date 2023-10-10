@@ -1,10 +1,10 @@
 using InvolveMINT.API.SharedKernel;
 
-namespace InvolveMINT.API.Core.ProofOfImpactAggregate
+namespace InvolveMINT.API.Core.EnrollmentAggregate
 {
-  public class ProofOfImpactEntity : EntityBase<string>, IAggregateRoot
+  public class ProofOfImpactEntity : EntityBase<string>
   {
-    public ProofOfImpactEntity()
+    private ProofOfImpactEntity()
     {
     }
 
@@ -31,6 +31,10 @@ namespace InvolveMINT.API.Core.ProofOfImpactAggregate
     public double? Latitude { get; set; }
 
     public string? EnrollmentId { get; set; }
+
+    public virtual ICollection<TaskEntity> Tasks { get; set; } = new List<TaskEntity>();
+    public virtual ICollection<QuestionAnswerEntity> QuestionAnswers { get; set; } = new List<QuestionAnswerEntity>();
+
   }
 }
 

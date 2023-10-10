@@ -1,10 +1,10 @@
 using InvolveMINT.API.SharedKernel;
 
-namespace InvolveMINT.API.Core.UserAggregate
+namespace InvolveMINT.API.Core.ExchangePartnerAggregate
 {
   public class ExchangePartnerApplicationEntity :  EntityBase<string>
   {
-    public ExchangePartnerApplicationEntity()
+    private ExchangePartnerApplicationEntity()
     {
     }
 

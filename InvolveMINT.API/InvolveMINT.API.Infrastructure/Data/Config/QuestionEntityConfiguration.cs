@@ -1,4 +1,4 @@
-using InvolveMINT.API.Core.QuestionAggregate;
+using InvolveMINT.API.Core.ProjectAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

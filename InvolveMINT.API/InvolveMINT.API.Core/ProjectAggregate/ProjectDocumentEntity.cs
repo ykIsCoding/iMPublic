@@ -1,10 +1,10 @@
 using InvolveMINT.API.SharedKernel;
 
-namespace InvolveMINT.API.Core.ProjectDocumentAggregate
+namespace InvolveMINT.API.Core.ProjectAggregate
 {
-  public class ProjectDocumentEntity : EntityBase<string>, IAggregateRoot
+  public class ProjectDocumentEntity : EntityBase<string>
   {
-    public ProjectDocumentEntity()
+    private ProjectDocumentEntity()
     {
     }
 

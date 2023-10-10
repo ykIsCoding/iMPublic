@@ -1,10 +1,10 @@
 using InvolveMINT.API.SharedKernel;
 
-namespace InvolveMINT.API.Core.ProofOfImpactAggregate
+namespace InvolveMINT.API.Core.EnrollmentAggregate
 {
   public class TaskEntity : EntityBase<string>
   {
-    public TaskEntity()
+    private TaskEntity()
     {
     }
 

@@ -1,10 +1,10 @@
 using InvolveMINT.API.SharedKernel;
 
-namespace InvolveMINT.API.Core.QuestionAggregate
+namespace InvolveMINT.API.Core.ProjectAggregate
 {
-  public class QuestionEntity : EntityBase<string>, IAggregateRoot
+  public class QuestionEntity : EntityBase<string>
   {
-    public QuestionEntity()
+    private QuestionEntity()
     {
     }
 

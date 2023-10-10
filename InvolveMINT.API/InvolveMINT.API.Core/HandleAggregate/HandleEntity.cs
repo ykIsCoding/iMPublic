@@ -3,7 +3,7 @@ namespace InvolveMINT.API.Core.HandleAggregate
 {
   public class HandleEntity : IAggregateRoot
   {
-    public HandleEntity()
+    private HandleEntity()
     {
     }
 

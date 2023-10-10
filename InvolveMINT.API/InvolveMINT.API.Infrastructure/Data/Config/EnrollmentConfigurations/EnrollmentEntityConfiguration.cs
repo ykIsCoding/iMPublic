@@ -53,6 +53,11 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.EnrollmentConfigurations
 
       builder.Navigation(e => e.EnrollmentDocuments).AutoInclude();
 
+      builder.HasMany(x => x.POIs)
+      .WithOne()
+      .HasForeignKey(x => x.EnrollmentId);
+
+      builder.Navigation(e => e.POIs).AutoInclude();
     }
   }
 }

@@ -3,7 +3,7 @@ namespace InvolveMINT.API.Core.CreditAggregate
 {
   public class CreditEntity : EntityBase<string>, IAggregateRoot
   {
-    public CreditEntity()
+    private CreditEntity()
     {
     }
 

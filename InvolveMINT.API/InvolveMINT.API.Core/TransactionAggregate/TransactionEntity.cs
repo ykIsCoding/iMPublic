@@ -4,7 +4,7 @@ namespace InvolveMINT.API.Core.TransactionAggregate
 {
   public class TransactionEntity : EntityBase<string>, IAggregateRoot
   {
-    public TransactionEntity()
+    private TransactionEntity()
     {
     }
 

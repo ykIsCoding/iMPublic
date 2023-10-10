@@ -4,7 +4,7 @@ namespace InvolveMINT.API.Core.RequestAggregate
 {
   public class RequestEntity : EntityBase<string>, IAggregateRoot
   {
-    public RequestEntity()
+    private RequestEntity()
     {
     }
 

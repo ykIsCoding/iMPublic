@@ -4,17 +4,8 @@ namespace InvolveMINT.API.Core.UserAggregate
 {
   public class UserEntity : EntityBase<string>, IAggregateRoot
   {
-    public UserEntity(string passwordHash, string salt, DateTime dateCreated, DateTime? dateLastLoggedIn, bool active, string activationHash, string forgotPasswordHash, bool? joyride, bool baAdmin)
+    private UserEntity()
     {
-      PasswordHash = passwordHash;
-      Salt = salt;
-      DateCreated = dateCreated;
-      DateLastLoggedIn = dateLastLoggedIn;
-      Active = active;
-      ActivationHash = activationHash;
-      ForgotPasswordHash = forgotPasswordHash;
-      Joyride = joyride;
-      BaAdmin = baAdmin;
     }
 
     public string PasswordHash { get; set; } = null!;

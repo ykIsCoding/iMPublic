@@ -3,7 +3,7 @@ namespace InvolveMINT.API.Core.ChangeMakerAggregate
 {
   public class ChangeMakerViewEntity
   {
-    public ChangeMakerViewEntity()
+    private ChangeMakerViewEntity()
     {
     }
 

@@ -4,15 +4,8 @@ namespace InvolveMINT.API.Core.AddressAggregate
 {
   public class AddressEntity : EntityBase<string>, IAggregateRoot
   {
-    public AddressEntity(string address1, string address2, string address3, string city, string state, string zip, string country = "United States")
+    private AddressEntity()
     {
-      Address1 = address1;
-      Address2 = address2;
-      Address3 = address3;
-      City = city;
-      State = state;
-      Zip = zip;
-      Country = country;
     }
 
     public string Address1 { get; set; } = null!;
@@ -27,7 +20,7 @@ namespace InvolveMINT.API.Core.AddressAggregate
 
     public string Zip { get; set; } = null!;
 
-    public string Country { get; set; } = null!;
+    public string Country { get; set; } = "United States";
 
   }
 }

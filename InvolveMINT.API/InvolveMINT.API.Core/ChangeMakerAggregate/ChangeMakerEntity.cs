@@ -5,15 +5,8 @@ namespace InvolveMINT.API.Core.ChangeMakerAggregate
 
   public class ChangeMakerEntity : EntityBase<string>, IAggregateRoot
   {
-    public ChangeMakerEntity(string firstName, string lastName, string profilePicFilePath, string bio, string phone, ChangeMakerOnboardingState onboardingState)
+    private ChangeMakerEntity()
     {
-      FirstName = firstName;
-      LastName = lastName;
-      ProfilePicFilePath = profilePicFilePath;
-      Bio = bio;
-      Phone = phone;
-      DateCreated = DateTime.Now;
-      OnboardingState = onboardingState;
     }
 
     public string FirstName { get; set; } = null!;

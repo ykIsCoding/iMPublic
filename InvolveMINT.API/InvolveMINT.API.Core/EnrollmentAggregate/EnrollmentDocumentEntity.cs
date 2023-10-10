@@ -1,16 +1,12 @@
-using System;
-using InvolveMINT.API.Core.PassportDocumentAggregate;
 using InvolveMINT.API.SharedKernel;
 
 namespace InvolveMINT.API.Core.EnrollmentAggregate
 {
-  public class EnrollmentDocumentEntity : EntityBase<string>, IAggregateRoot
+  public class EnrollmentDocumentEntity : EntityBase<string>
   {
-    private EnrollmentDocumentEntity(string passportDocumentId, string projectDocumentId, string enrollmentId)
+    private EnrollmentDocumentEntity()
     {
-      PassportDocumentId = passportDocumentId;
-      ProjectDocumentId = projectDocumentId;
-      EnrollmentId = enrollmentId;
+
     }
 
     public string PassportDocumentId { get; set; }

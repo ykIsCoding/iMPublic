@@ -4,7 +4,7 @@ namespace InvolveMINT.API.Core.ExchangePartnerAggregate
 {
   public class ExchangePartnerEntity : EntityBase<string>, IAggregateRoot
   {
-    public ExchangePartnerEntity()
+    private ExchangePartnerEntity()
     {
     }
 
