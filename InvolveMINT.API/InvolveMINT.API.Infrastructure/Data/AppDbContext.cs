@@ -3,11 +3,11 @@ using InvolveMINT.API.SharedKernel;
 using Microsoft.EntityFrameworkCore;
 using Ardalis.SmartEnum.EFCore;
 
-using InvolveMINT.API.Core.AddressAggregate;
-using InvolveMINT.API.Core.ChangeMakerAggregate;
-using InvolveMINT.API.Core.UserAggregate;
-using InvolveMINT.API.Core.PassportDocumentAggregate;
-using InvolveMINT.API.Core.EnrollmentAggregate;
+using InvolveMINT.API.Core.Aggregates.Addresses;
+using InvolveMINT.API.Core.Aggregates.ChangeMakers;
+using InvolveMINT.API.Core.Aggregates.Users;
+using InvolveMINT.API.Core.Aggregates.ChangeMakers;
+using InvolveMINT.API.Core.Aggregates.Enrollments;
 using SmartEnum.EFCore;
 
 namespace InvolveMINT.API.Infrastructure.Data;
@@ -22,11 +22,11 @@ public class AppDbContext : DbContext
     //_dispatcher = dispatcher;
   }
 
-  public DbSet<AddressEntity> Addresses => Set<AddressEntity>();
-  public DbSet<ChangeMakerEntity> ChangeMakers => Set<ChangeMakerEntity>();
-  public DbSet<UserEntity> Users => Set<UserEntity>();
-  public DbSet<PassportDocumentEntity> PassportDocuments => Set<PassportDocumentEntity>();
-  public DbSet<EnrollmentEntity> Enrollments => Set<EnrollmentEntity>();
+  public DbSet<Address> Addresses => Set<Address>();
+  public DbSet<ChangeMaker> ChangeMakers => Set<ChangeMaker>();
+  public DbSet<User> Users => Set<User>();
+  public DbSet<PassportDocument> PassportDocuments => Set<PassportDocument>();
+  public DbSet<Enrollment> Enrollments => Set<Enrollment>();
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {

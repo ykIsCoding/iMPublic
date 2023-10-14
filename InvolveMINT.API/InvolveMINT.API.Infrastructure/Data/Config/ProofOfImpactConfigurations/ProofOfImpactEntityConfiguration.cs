@@ -1,12 +1,12 @@
-using InvolveMINT.API.Core.EnrollmentAggregate;
+using InvolveMINT.API.Core.Aggregates.Enrollments;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.ProofOfImpactConfigurations
 {
-  public class ProofOfImpactEntityConfiguration : IEntityTypeConfiguration<ProofOfImpactEntity>
+  public class ProofOfImpactConfiguration : IEntityTypeConfiguration<ProofOfImpact>
   {
-    public void Configure(EntityTypeBuilder<ProofOfImpactEntity> builder)
+    public void Configure(EntityTypeBuilder<ProofOfImpact> builder)
     {
       builder.HasKey(e => e.Id);
 

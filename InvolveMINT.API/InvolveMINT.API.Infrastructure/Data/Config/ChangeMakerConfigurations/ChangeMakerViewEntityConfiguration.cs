@@ -1,12 +1,12 @@
-using InvolveMINT.API.Core.ChangeMakerAggregate;
+using InvolveMINT.API.Core.Aggregates.ChangeMakers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.ChangeMakerConfigurations
 {
-  public class ChangeMakerViewEntityConfiguration : IEntityTypeConfiguration<ChangeMakerViewEntity>
+  public class ChangeMakerViewConfiguration : IEntityTypeConfiguration<ChangeMakerView>
   {
-    public void Configure(EntityTypeBuilder<ChangeMakerViewEntity> builder)
+    public void Configure(EntityTypeBuilder<ChangeMakerView> builder)
     {
       builder
         .HasNoKey()

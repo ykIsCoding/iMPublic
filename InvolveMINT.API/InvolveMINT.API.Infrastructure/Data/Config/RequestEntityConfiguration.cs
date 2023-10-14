@@ -1,14 +1,14 @@
 using Ardalis.Specification;
-using InvolveMINT.API.Core.OfferAggregate;
-using InvolveMINT.API.Core.RequestAggregate;
+using InvolveMINT.API.Core.Aggregates.Offers;
+using InvolveMINT.API.Core.Aggregates.Requests;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config
 {
-  public class RequestEntityConfiguration : IEntityTypeConfiguration<RequestEntity>
+  public class RequestConfiguration : IEntityTypeConfiguration<Request>
   {
-    public void Configure(EntityTypeBuilder<RequestEntity> builder)
+    public void Configure(EntityTypeBuilder<Request> builder)
     {
       builder.HasKey(e => e.Id);
 

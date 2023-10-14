@@ -1,12 +1,12 @@
-using InvolveMINT.API.Core.UserAggregate;
+using InvolveMINT.API.Core.Aggregates.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.UserConfigurations
 {
-  public class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
+  public class UserConfiguration : IEntityTypeConfiguration<User>
   {
-    public void Configure(EntityTypeBuilder<UserEntity> builder)
+    public void Configure(EntityTypeBuilder<User> builder)
     {
       builder.HasKey(e => e.Id);
 

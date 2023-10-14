@@ -3,7 +3,7 @@ using Serilog;
 using Microsoft.EntityFrameworkCore;
 using Ardalis.ListStartupServices;
 using InvolveMINT.API.SharedKernel;
-using InvolveMINT.API.Core;
+using InvolveMINT.API.Core.Services.Interfaces;
 using InvolveMINT.API.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);

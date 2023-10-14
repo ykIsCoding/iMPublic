@@ -1,12 +1,12 @@
-using InvolveMINT.API.Core.EnrollmentAggregate;
+using InvolveMINT.API.Core.Aggregates.Enrollments;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.EnrollmentConfigurations
 {
-  public class EnrollmentDocumentEntityConfiguration : IEntityTypeConfiguration<EnrollmentDocumentEntity>
+  public class EnrollmentDocumentConfiguration : IEntityTypeConfiguration<EnrollmentDocument>
   {
-    public void Configure(EntityTypeBuilder<EnrollmentDocumentEntity> builder)
+    public void Configure(EntityTypeBuilder<EnrollmentDocument> builder)
     {
       builder.ToTable("EnrollmentDocument");
 

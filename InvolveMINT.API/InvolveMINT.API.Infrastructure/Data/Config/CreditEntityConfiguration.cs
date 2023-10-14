@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using InvolveMINT.API.Core.CreditAggregate;
+using InvolveMINT.API.Core.Aggregates.Credits;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config
 {
-  public class CreditEntityConfiguration : IEntityTypeConfiguration<CreditEntity>
+  public class CreditConfiguration : IEntityTypeConfiguration<Credit>
   {
-    public void Configure(EntityTypeBuilder<CreditEntity> builder)
+    public void Configure(EntityTypeBuilder<Credit> builder)
     {
       builder.ToTable("Credit");
 

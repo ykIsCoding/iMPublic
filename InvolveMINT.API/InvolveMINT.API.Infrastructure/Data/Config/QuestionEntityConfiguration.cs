@@ -1,12 +1,12 @@
-using InvolveMINT.API.Core.ProjectAggregate;
+using InvolveMINT.API.Core.Aggregates.Projects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config
 {
-  public class QuestionEntityConfiguration : IEntityTypeConfiguration<QuestionEntity>
+  public class QuestionConfiguration : IEntityTypeConfiguration<Question>
   {
-    public void Configure(EntityTypeBuilder<QuestionEntity> builder)
+    public void Configure(EntityTypeBuilder<Question> builder)
     {
       builder.HasKey(e => e.Id);
       builder.ToTable("Question");

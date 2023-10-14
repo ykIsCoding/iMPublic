@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using InvolveMINT.API.Core.AddressAggregate;
+using InvolveMINT.API.Core.Aggregates.Addresses;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config
 {
-  public class AddressEntityConfiguration : IEntityTypeConfiguration<AddressEntity>
+  public class AddressConfiguration : IEntityTypeConfiguration<Address>
   {
-    public void Configure(EntityTypeBuilder<AddressEntity> builder)
+    public void Configure(EntityTypeBuilder<Address> builder)
     {
 
       builder.ToTable("Address");

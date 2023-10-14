@@ -1,13 +1,13 @@
 using Ardalis.Specification;
-using InvolveMINT.API.Core.TransactionAggregate;
+using InvolveMINT.API.Core.Aggregates.Transactions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config
 {
-  public class TransactionEntityConfiguration : IEntityTypeConfiguration<TransactionEntity>
+  public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
   {
-    public void Configure(EntityTypeBuilder<TransactionEntity> builder)
+    public void Configure(EntityTypeBuilder<Transaction> builder)
     {
       builder.HasKey(e => e.Id);
 

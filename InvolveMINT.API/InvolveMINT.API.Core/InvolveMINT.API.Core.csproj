@@ -5,47 +5,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="ChangeMakerAggregate\" />
-    <None Remove="UserAggregate\" />
-    <None Remove="PassportDocumentAggregate\" />
-    <None Remove="EnrollmentAggregate\" />
-    <None Remove="ProjectDocumentAggregate\" />
-    <None Remove="ProjectAggregate\" />
-    <None Remove="QuestionAggregate\" />
-    <None Remove="ProofOfImpactAggregate\" />
-    <None Remove="CreditAggregate\" />
-    <None Remove="ExchangePartnerAggregate\" />
-    <None Remove="HandleAggregate\" />
-    <None Remove="OfferAggregate\" />
-    <None Remove="VoucherAggregate\" />
-    <None Remove="RequestAggregate\" />
-    <None Remove="ServePartnerAggregate\" />
-    <None Remove="TransactionAggregate\" />
-    <None Remove="AddressAggregate\" />
-    <None Remove="EnrollmentAggregate\Get\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ChangeMakerAggregate\" />
-    <Folder Include="UserAggregate\" />
-    <Folder Include="PassportDocumentAggregate\" />
-    <Folder Include="EnrollmentAggregate\" />
-    <Folder Include="ProjectDocumentAggregate\" />
-    <Folder Include="ProjectAggregate\" />
-    <Folder Include="QuestionAggregate\" />
-    <Folder Include="ProofOfImpactAggregate\" />
-    <Folder Include="CreditAggregate\" />
-    <Folder Include="ExchangePartnerAggregate\" />
-    <Folder Include="HandleAggregate\" />
-    <Folder Include="OfferAggregate\" />
-    <Folder Include="VoucherAggregate\" />
-    <Folder Include="RequestAggregate\" />
-    <Folder Include="ServePartnerAggregate\" />
-    <Folder Include="TransactionAggregate\" />
-    <Folder Include="AddressAggregate\" />
-    <Folder Include="EnrollmentAggregate\Get\" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InvolveMINT.API.SharedKernel\InvolveMINT.API.SharedKernel.csproj" />
   </ItemGroup>

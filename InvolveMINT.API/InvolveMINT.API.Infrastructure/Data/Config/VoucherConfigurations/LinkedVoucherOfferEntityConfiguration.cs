@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using InvolveMINT.API.Core.VoucherAggregate;
+using InvolveMINT.API.Core.Aggregates.Vouchers;
 using Ardalis.Specification;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.VoucherConfigurations
 {
-  public class LinkedVoucherOfferEntityConfiguration : IEntityTypeConfiguration<LinkedVoucherOfferEntity>
+  public class LinkedVoucherOfferConfiguration : IEntityTypeConfiguration<LinkedVoucherOffer>
   {
-    public void Configure(EntityTypeBuilder<LinkedVoucherOfferEntity> builder)
+    public void Configure(EntityTypeBuilder<LinkedVoucherOffer> builder)
     {
       builder.HasKey(e => e.Id);
 

@@ -1,5 +1,5 @@
-using InvolveMINT.API.Core.EnrollmentAggregate.Get;
-using InvolveMINT.API.Core.EnrollmentAggregate;
+using InvolveMINT.API.Core.Aggregates.Enrollments.Get;
+using InvolveMINT.API.Core.Aggregates.Enrollments;
 using InvolveMINT.API.SharedKernel;
 
 
@@ -7,9 +7,9 @@ namespace InvolveMINT.API.UseCases.Enrollments.Get
 {
   public class GetEnrollmentHandler
   {
-    private readonly IReadRepository<EnrollmentEntity> _repository;
+    private readonly IReadRepository<Enrollment> _repository;
 
-    public GetEnrollmentHandler(IReadRepository<EnrollmentEntity> repository)
+    public GetEnrollmentHandler(IReadRepository<Enrollment> repository)
     {
       _repository = repository;
     }
@@ -18,7 +18,7 @@ namespace InvolveMINT.API.UseCases.Enrollments.Get
     {
       GetEnrollmentSpecification spec = new GetEnrollmentSpecification(filter);
 
-      EnrollmentEntity? result = await _repository.FirstOrDefaultAsync(spec);
+      Enrollment? result = await _repository.FirstOrDefaultAsync(spec);
     }
   }
 }

@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using InvolveMINT.API.Core.ExchangePartnerAggregate;
+using InvolveMINT.API.Core.Aggregates.ExchangePartners;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.ExchangePartnerConfigurations
 {
-  public class ExchangePartnerViewEntityConfiguration : IEntityTypeConfiguration<ExchangePartnerViewEntity>
+  public class ExchangePartnerViewConfiguration : IEntityTypeConfiguration<ExchangePartnerView>
   {
-    public void Configure(EntityTypeBuilder<ExchangePartnerViewEntity> builder)
+    public void Configure(EntityTypeBuilder<ExchangePartnerView> builder)
     {
       builder
         .HasNoKey()

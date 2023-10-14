@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using InvolveMINT.API.Core.ExchangePartnerAggregate;
+using InvolveMINT.API.Core.Aggregates.ExchangePartners;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.ExchangePartnerConfigurations
 {
-  public class ExchangePartnerEntityConfiguration : IEntityTypeConfiguration<ExchangePartnerEntity>
+  public class ExchangePartnerConfiguration : IEntityTypeConfiguration<ExchangePartner>
   {
-    public void Configure(EntityTypeBuilder<ExchangePartnerEntity> builder)
+    public void Configure(EntityTypeBuilder<ExchangePartner> builder)
     {
       builder.HasKey(e => e.Id);
       builder.ToTable("ExchangePartner");
@@ -86,7 +86,7 @@ namespace InvolveMINT.API.Infrastructure.Data.Config.ExchangePartnerConfiguratio
 
       builder.HasOne(x => x.ExchangeAdmin)
         .WithOne()
-        .HasForeignKey<ExchangeAdminEntity>(x => x.ExchangePartnerId);
+        .HasForeignKey<ExchangeAdmin>(x => x.ExchangePartnerId);
     }
   }
 }

@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using InvolveMINT.API.Core.OfferAggregate;
+using InvolveMINT.API.Core.Aggregates.Offers;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config
 {
-  public class OfferEntityConfiguration : IEntityTypeConfiguration<OfferEntity>
+  public class OfferConfiguration : IEntityTypeConfiguration<Offer>
   {
-    public void Configure(EntityTypeBuilder<OfferEntity> builder)
+    public void Configure(EntityTypeBuilder<Offer> builder)
     {
       builder.HasKey(e => e.Id);
       builder.ToTable("Offer");

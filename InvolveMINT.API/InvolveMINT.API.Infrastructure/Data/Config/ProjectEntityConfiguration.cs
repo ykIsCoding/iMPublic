@@ -1,12 +1,12 @@
-using InvolveMINT.API.Core.ProjectAggregate;
+using InvolveMINT.API.Core.Aggregates.Projects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config
 {
-  public class ProjectEntityConfiguration : IEntityTypeConfiguration<ProjectEntity>
+  public class ProjectConfiguration : IEntityTypeConfiguration<Project>
   {
-    public void Configure(EntityTypeBuilder<ProjectEntity> builder)
+    public void Configure(EntityTypeBuilder<Project> builder)
     {
       builder.HasKey(e => e.Id);
 

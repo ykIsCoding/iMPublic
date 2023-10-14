@@ -1,12 +1,12 @@
-using InvolveMINT.API.Core.ChangeMakerAggregate;
+using InvolveMINT.API.Core.Aggregates.ChangeMakers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.ChangeMakerConfigurations;
 
-public class ChangeMakerEntityConfiguration : IEntityTypeConfiguration<ChangeMakerEntity>
+public class ChangeMakerConfiguration : IEntityTypeConfiguration<ChangeMaker>
 {
-  public void Configure(EntityTypeBuilder<ChangeMakerEntity> builder)
+  public void Configure(EntityTypeBuilder<ChangeMaker> builder)
   {
     builder.ToTable("ChangeMaker");
 

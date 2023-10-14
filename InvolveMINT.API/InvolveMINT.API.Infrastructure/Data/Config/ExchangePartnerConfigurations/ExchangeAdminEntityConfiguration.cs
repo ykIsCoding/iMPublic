@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using InvolveMINT.API.Core.ExchangePartnerAggregate;
+using InvolveMINT.API.Core.Aggregates.ExchangePartners;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.ExchangePartnerConfigurations
 {
-  public class ExchangeAdminEntityConfiguration : IEntityTypeConfiguration<ExchangeAdminEntity>
+  public class ExchangeAdminConfiguration : IEntityTypeConfiguration<ExchangeAdmin>
   {
-    public void Configure(EntityTypeBuilder<ExchangeAdminEntity> builder)
+    public void Configure(EntityTypeBuilder<ExchangeAdmin> builder)
     {
       builder.HasKey(e => e.Id);
 

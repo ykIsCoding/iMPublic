@@ -1,34 +1,35 @@
 ﻿using Ardalis.GuardClauses;
-using InvolveMINT.API.Core.ChangeMakerAggregate;
-using InvolveMINT.API.Core.EnrollmentAggregate;
-using InvolveMINT.API.Core.EnrollmentAggregate.Get;
-using InvolveMINT.API.Core.ProjectAggregate;
+using InvolveMINT.API.Core.Aggregates.ChangeMakers;
+using InvolveMINT.API.Core.Aggregates.Enrollments;
+using InvolveMINT.API.Core.Aggregates.Enrollments.Get;
+using InvolveMINT.API.Core.Aggregates.Projects;
 using InvolveMINT.API.SharedKernel;
+using InvolveMINT.API.Core.Services.Interfaces;
 
 namespace InvolveMINT.API.Core.Services;
 
 public class EnrollInProjectService : IEnrollInProjectService
 {
-    private readonly IRepository<ProjectEntity> projectRepository;
-    private readonly IReadRepository<ChangeMakerEntity> changeMakerRepository;
-    private readonly IRepository<EnrollmentEntity> enrollmentRepository;
+    private readonly IRepository<Project> projectRepository;
+    private readonly IReadRepository<ChangeMaker> changeMakerRepository;
+    private readonly IRepository<Enrollment> enrollmentRepository;
 
-  public EnrollInProjectService(IRepository<ProjectEntity> projectRepository, IReadRepository<ChangeMakerEntity> changeMakerRepository, IRepository<EnrollmentEntity> enrollmentRepository)
+  public EnrollInProjectService(IRepository<Project> projectRepository, IReadRepository<ChangeMaker> changeMakerRepository, IRepository<Enrollment> enrollmentRepository)
   {
     this.projectRepository = projectRepository;
     this.changeMakerRepository = changeMakerRepository;
     this.enrollmentRepository = enrollmentRepository;
   }
 
-  public async Task<EnrollmentEntity> EnrollInProject(string changeMakerId, string projectId)
+  public async Task<Enrollment> EnrollInProject(string changeMakerId, string projectId)
   {
-    ProjectEntity project = await GetProject(projectId);
+    Project project = await GetProject(projectId);
 
     await VerifyNotMaxEnrollmentCount(projectId, project);
 
     await VerifyEnrollmentDoesNotExist(changeMakerId, projectId);
 
-    EnrollmentEntity result = EnrollmentEntity.CreateInitialEnrollmentApplication(changeMakerId, projectId);
+    Enrollment result = Enrollment.CreateInitialEnrollmentApplication(changeMakerId, projectId);
 
     return await enrollmentRepository.AddAsync(result);
 
@@ -40,13 +41,13 @@ public class EnrollInProjectService : IEnrollInProjectService
 
     GetEnrollmentSpecification existingEnrollmentSpecification = new(existingEnrollmentFilter);
 
-    EnrollmentEntity? existingEnrollment = await enrollmentRepository.FirstOrDefaultAsync(existingEnrollmentSpecification);
+    Enrollment? existingEnrollment = await enrollmentRepository.FirstOrDefaultAsync(existingEnrollmentSpecification);
 
     if (existingEnrollment != null)
       throw new InvalidOperationException($"Enrollment for ChangemakerId {changeMakerId} and project id {projectId}");
   }
 
-  private async Task VerifyNotMaxEnrollmentCount(string projectId, ProjectEntity project)
+  private async Task VerifyNotMaxEnrollmentCount(string projectId, Project project)
   {
     GetEnrollmentQueryFilter currentEnrollmentCountFilter = new(projectId: projectId);
 
@@ -58,9 +59,9 @@ public class EnrollInProjectService : IEnrollInProjectService
       throw new InvalidOperationException($"Max Number of Change Makers already reached for project projectId: {projectId}, projectName: {project.Title}");
   }
 
-  private async Task<ProjectEntity> GetProject(string projectId)
+  private async Task<Project> GetProject(string projectId)
   {
-    ProjectEntity? project = await projectRepository.GetByIdAsync(projectId);
+    Project? project = await projectRepository.GetByIdAsync(projectId);
 
     Guard.Against.Null(project, projectId, $"No project found for ${projectId}");
 

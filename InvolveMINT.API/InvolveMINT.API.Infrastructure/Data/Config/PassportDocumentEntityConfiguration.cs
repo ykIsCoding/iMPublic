@@ -1,12 +1,12 @@
-using InvolveMINT.API.Core.PassportDocumentAggregate;
+using InvolveMINT.API.Core.Aggregates.ChangeMakers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config
 {
-  public class PassportDocumentEntityConfiguration : IEntityTypeConfiguration<PassportDocumentEntity>
+  public class PassportDocumentConfiguration : IEntityTypeConfiguration<PassportDocument>
   {
-    public void Configure(EntityTypeBuilder<PassportDocumentEntity> builder)
+    public void Configure(EntityTypeBuilder<PassportDocument> builder)
     {
       builder.ToTable("PassportDocuments");
 

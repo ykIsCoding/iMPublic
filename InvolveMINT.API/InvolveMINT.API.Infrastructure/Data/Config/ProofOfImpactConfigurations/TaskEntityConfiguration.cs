@@ -1,13 +1,13 @@
 using Ardalis.Specification;
-using InvolveMINT.API.Core.EnrollmentAggregate;
+using InvolveMINT.API.Core.Aggregates.Enrollments;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.ProofOfImpactConfigurations
 {
-  public class TaskEntityConfiguration : IEntityTypeConfiguration<TaskEntity>
+  public class ProofOfImpactTaskConfiguration : IEntityTypeConfiguration<ProofOfImpactTask>
   {
-    public void Configure(EntityTypeBuilder<TaskEntity> builder)
+    public void Configure(EntityTypeBuilder<ProofOfImpactTask> builder)
     {
       builder.HasKey(e => e.Id);
 

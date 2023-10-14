@@ -1,12 +1,12 @@
-using InvolveMINT.API.Core.VoucherAggregate;
+using InvolveMINT.API.Core.Aggregates.Vouchers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.VoucherConfigurations
 {
-  public class VoucherEntityConfiguration : IEntityTypeConfiguration<VoucherEntity>
+  public class VoucherConfiguration : IEntityTypeConfiguration<Voucher>
   {
-    public void Configure(EntityTypeBuilder<VoucherEntity> builder)
+    public void Configure(EntityTypeBuilder<Voucher> builder)
     {
       builder.HasKey(e => e.Id);
 

@@ -1,12 +1,12 @@
-using InvolveMINT.API.Core.ServePartnerAggregate;
+using InvolveMINT.API.Core.Aggregates.ServePartners;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InvolveMINT.API.Infrastructure.Data.Config.ServePartnerConfigurations
 {
-  public class ServeAdminEntityConfiguration : IEntityTypeConfiguration<ServeAdminEntity>
+  public class ServeAdminConfiguration : IEntityTypeConfiguration<ServeAdmin>
   {
-    public void Configure(EntityTypeBuilder<ServeAdminEntity> builder)
+    public void Configure(EntityTypeBuilder<ServeAdmin> builder)
     {
       builder.HasKey(e => e.Id);
 
