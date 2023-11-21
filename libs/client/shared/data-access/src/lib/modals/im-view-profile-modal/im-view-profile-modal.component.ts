@@ -5,6 +5,7 @@ import {
   calculatePoiStatus,
   calculatePoiTimeWorked,
   calculateProjectsHeld,
+  environment,
   formatImPublicAddress,
   Handle,
   Offer,
@@ -82,7 +83,7 @@ export class ImViewProfileModalComponent
         tap((profile) => {
           viewProfileCache.set(this.handle, profile);
           this.updateState({ profile });
-          if (profile.exchangePartner || profile.servePartner) {
+          if (environment.locationServicesEnabled && (profile.exchangePartner || profile.servePartner)) {
             getPosition().then(({ lat, lng }) => {
               this.updateState({
                 distance: this.distance(lat, lng, profile.exchangePartner || profile.servePartner),

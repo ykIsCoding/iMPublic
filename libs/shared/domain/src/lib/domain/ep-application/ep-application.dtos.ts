@@ -20,18 +20,15 @@ export abstract class SubmitEpApplicationDto {
   @Matches(ImConfig.regex.phone)
   phone!: string;
 
-  @IsNotEmpty()
   @IsString()
   address1!: string;
 
   @IsString()
   address2?: string;
 
-  @IsNotEmpty()
   @IsString()
   city!: string;
 
-  @IsNotEmpty()
   @IsString()
   state!: string;
 
@@ -84,18 +81,15 @@ export abstract class BaSubmitEpApplicationDto {
   @Matches(ImConfig.regex.phone)
   phone!: string;
 
-  @IsNotEmpty()
   @IsString()
   address1!: string;
 
   @IsString()
   address2?: string;
 
-  @IsNotEmpty()
   @IsString()
   city!: string;
 
-  @IsNotEmpty()
   @IsString()
   state!: string;
 

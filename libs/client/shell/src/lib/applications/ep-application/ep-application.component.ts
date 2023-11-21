@@ -36,10 +36,10 @@ export class EpApplicationComponent
   applyFor: 'business' | 'yourself' = 'yourself';
 
   readonly epForm = new FormGroup<EpForm>({
-    address1: new FormControl('', [(c) => Validators.required(c)]),
+    address1: new FormControl(''),
     address2: new FormControl(''),
-    city: new FormControl('', [(c) => Validators.required(c)]),
-    state: new FormControl('', [(c) => Validators.required(c)]),
+    city: new FormControl(''),
+    state: new FormControl(''),
     zip: new FormControl('', [(c) => Validators.required(c), Validators.pattern(ImConfig.regex.zipCode)]),
     email: new FormControl('', [
       (c) => (this.applyFor === 'business' ? Validators.required(c) : null),
@@ -49,7 +49,7 @@ export class EpApplicationComponent
     handle: new FormControl('', [(c) => Validators.required(c), Validators.pattern(ImConfig.regex.handle)]),
     name: new FormControl('', [(c) => Validators.required(c)]),
     phone: new FormControl('', [(c) => Validators.required(c), Validators.pattern(ImConfig.regex.phone)]),
-    website: new FormControl('', [Validators.pattern(ImConfig.regex.url)]),
+    website: new FormControl(''),
   });
 
   selectedUSState = '';

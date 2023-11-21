@@ -33,4 +33,5 @@ export interface Env {
   // eslint-disable-next-line @typescript-eslint/ban-types
   gcp: object;
   scrypt: FirebaseScryptOptions;
+  locationServicesEnabled: boolean;
 }

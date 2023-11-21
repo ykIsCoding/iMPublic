@@ -40,7 +40,7 @@
             <div header class="manrope">Requirements</div>
             <ng-container body>
               <ol>
-                <li>Record your time {{ project.requireLocation ? 'and location' : '' }} in app</li>
+                <li>Record your time {{ state.envRequireLocationEnabled && project.requireLocation ? 'and location' : '' }} in app</li>
                 <li *ngFor="let question of project.questions; index as i">Answer Question {{ i + 1 }}</li>
                 <li *ngIf="project.requireImages">Upload images of impact</li>
               </ol>

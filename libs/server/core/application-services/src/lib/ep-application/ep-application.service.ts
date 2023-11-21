@@ -4,6 +4,7 @@ import {
   HandleRepository,
 } from '@involvemint/server/core/domain-services';
 import {
+  Address,
   BaSubmitEpApplicationDto,
   defaultStorefrontListingStatus,
   environment,
@@ -52,6 +53,18 @@ export class EpApplicationService {
   async submit(query: IQuery<EpApplication>, token: string, dto: SubmitEpApplicationDto) {
     const user = await this.auth.validateUserToken(token);
     await this.handle.verifyHandleUniqueness(dto.handle);
+
+    let address: Address = {
+      id: uuid.v4(),
+      address1: dto.address1,
+      address2: dto.address2,
+      city: dto.city,
+      state: dto.state,
+      zip: dto.zip,
+    };
+
+    address = await this.retrieveAndValidateAddress(address);
+
     const epAppId = uuid.v4();
     const epApp = await this.epAppRepo.upsert(
       {
@@ -64,14 +77,7 @@ export class EpApplicationService {
         phone: dto.phone,
         website: dto.website,
         dateCreated: new Date(),
-        address: {
-          id: uuid.v4(),
-          address1: dto.address1,
-          address2: dto.address2,
-          city: dto.city,
-          state: dto.state,
-          zip: dto.zip,
-        },
+        address,
       },
       query
     );
@@ -82,6 +88,29 @@ export class EpApplicationService {
 
     await this.process({}, '', { allow: true, id: epAppId }, false);
     return epApp;
+  }
+
+  private async retrieveAndValidateAddress(address: Address): Promise<Address> {
+    const geo = geocoder.default({ provider: 'google', apiKey: environment.gcpApiKey });
+    const res = await geo.geocode(Object.entries(address).join(' '));
+    console.log(res);
+    const state = res[0]?.administrativeLevels?.level1short;
+    const city = res[0]?.city;
+
+    if (res.length < 1) {
+      throw new HttpException('Address could not be verified. Please enter a correct address', HttpStatus.BAD_REQUEST);
+    }
+    else if (address.city && address.city.trim().length > 0 && address.city.trim().toLowerCase() !== city?.toLowerCase().trim()) {
+      throw new HttpException('Supplied city does not match zip code. Please enter a correct address', HttpStatus.BAD_REQUEST);
+    }
+    else if (address.state && address.state.trim().length > 0 && address.state.trim().toLowerCase() !== state?.toLowerCase().trim()) {
+      throw new HttpException('Supplied state does not match zip code. Please enter a correct address', HttpStatus.BAD_REQUEST);
+    }
+
+    address.city = city ?? '';
+    address.state = state ?? '';
+
+    return address;
   }
 
   // BA only
@@ -104,6 +133,18 @@ export class EpApplicationService {
       dto.email,
       epAppId
     );
+
+    let address: Address = {
+      id: uuid.v4(),
+      address1: dto.address1,
+      address2: dto.address2,
+      city: dto.city,
+      state: dto.state,
+      zip: dto.zip,
+    };
+
+    address = await this.retrieveAndValidateAddress(address);
+
     await this.epAppRepo.upsert({
       id: epAppId,
       handle: { id: dto.handle },
@@ -114,14 +155,7 @@ export class EpApplicationService {
       phone: dto.phone,
       website: dto.website,
       dateCreated: new Date(),
-      address: {
-        id: uuid.v4(),
-        address1: dto.address1,
-        address2: dto.address2,
-        city: dto.city,
-        state: dto.state,
-        zip: dto.zip,
-      },
+      address: address,
     });
 
     await this.process({}, '', { allow: true, id: epAppId }, false, true);
@@ -174,7 +208,6 @@ export class EpApplicationService {
 
     const geo = geocoder.default({ provider: 'google', apiKey: environment.gcpApiKey });
     const res = await geo.geocode(Object.entries(epApp.address).join(' '));
-
     const lat = Number(res[0]?.latitude?.toFixed(4));
     const lng = Number(res[0]?.longitude?.toFixed(4));
 
@@ -194,7 +227,14 @@ export class EpApplicationService {
           longitude: isNaN(lng) ? undefined : lng,
           offers: [],
           requests: [],
-          address: epApp.address,
+          address: {
+            id: epApp.id,
+            address1: epApp.address.address1,
+            address2: epApp.address.address2,
+            city: epApp.address.city,
+            state: epApp.address.state,
+            zip: epApp.address.zip
+          },
           onboardingState: EpOnboardingState.profile,
           admins: [
             {

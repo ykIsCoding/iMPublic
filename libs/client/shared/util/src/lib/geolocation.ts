@@ -10,6 +10,7 @@ export interface LatLng {
  * @param status StatusService to show loading screen
  */
 export function getPosition(status?: StatusService) {
+  console.log('geoloaction.getPosition called');
   // eslint-disable-next-line no-async-promise-executor
   return new Promise<LatLng>(async (resolve, reject) => {
     if (status) await status.showLoader('Getting Location...');
@@ -28,10 +29,12 @@ export function getPosition(status?: StatusService) {
 }
 
 export function parseLatLngAsString({ lat, lng }: LatLng) {
+  console.log('geoloaction.parseLatLngAsString called');
   return `${lat},${lng}`;
 }
 
 export function parseLatLngAsObj(latLng: string): LatLng {
+  console.log('geoloaction.parseLatLngAsObj called');
   const parse = latLng.split(',');
   return { lat: Number(parse[0]), lng: Number(parse[1]) };
 }
@@ -43,6 +46,7 @@ export function coordinateDistance(
   lon2: number,
   unit: 'km' | 'miles' = 'miles'
 ) {
+  console.log('geoloaction.coordinateDistance called');
   const p = 0.017453292519943295; // Math.PI / 180
   const c = Math.cos;
   const a = 0.5 - c((lat2 - lat1) * p) / 2 + (c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))) / 2;

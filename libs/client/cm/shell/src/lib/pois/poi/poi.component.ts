@@ -18,6 +18,7 @@ import {
   calculatePoiDurationFromNow,
   calculatePoiMandatoryClockOutDate,
   calculatePoiStatus,
+  environment,
   ImConfig,
   PoiStatus,
   QuestionAnswersDto,
@@ -221,7 +222,10 @@ export class PoiComponent extends StatefulComponent<State> implements OnInit, Co
   async startTimer(poi: PoiCmStoreModel) {
     let latLng: LatLng | undefined;
     try {
-      latLng = await getPosition(this.status);
+      if(environment.locationServicesEnabled)
+      {
+        latLng = await getPosition(this.status);
+      }
     } catch (error) {
       console.error(error);
     }

@@ -16,6 +16,7 @@ import {
   DenyPoiDto,
   EndPoiTimerDto,
   EnrollmentStatus,
+  environment,
   generatePoiImageFilePath,
   GetPoisByProjectDto,
   ImStorageFileRoots,
@@ -187,7 +188,7 @@ export class PoiService {
         HttpStatus.CONFLICT
       );
     }
-    if (poi.enrollment.project.requireLocation && (!dto.latitude || !dto.longitude)) {
+    if (environment.locationServicesEnabled && poi.enrollment.project.requireLocation && (!dto.latitude || !dto.longitude)) {
       throw new HttpException('Your location is required for this Proof of Impact.', HttpStatus.BAD_REQUEST);
     }
 

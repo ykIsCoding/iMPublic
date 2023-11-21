@@ -11,6 +11,7 @@ import {
 import { RouteService } from '@involvemint/client/shared/routes';
 import { ImTabsComponent } from '@involvemint/client/shared/ui';
 import { coordinateDistance, getPosition, StatefulComponent } from '@involvemint/client/shared/util';
+import { environment } from '@involvemint/shared/domain';
 import { parseDate } from '@involvemint/shared/util';
 import { formatDistanceToNow } from 'date-fns';
 import { merge } from 'rxjs';
@@ -83,14 +84,17 @@ export class MarketComponent extends StatefulComponent<State> implements OnInit 
       this.user.market.selectors.exchangePartners$.pipe(
         tap(({ exchangePartners, loaded }) => {
           this.updateState({ exchangePartners, loaded });
-          getPosition().then(({ lat, lng }) => {
-            this.updateState({
-              exchangePartners: this.state.exchangePartners.map((ep) => ({
-                ...ep,
-                distance: this.distance(lat, lng, ep),
-              })),
+          if(environment.locationServicesEnabled)
+          {
+            getPosition().then(({ lat, lng }) => {
+              this.updateState({
+                exchangePartners: this.state.exchangePartners.map((ep) => ({
+                  ...ep,
+                  distance: this.distance(lat, lng, ep),
+                })),
+              });
             });
-          });
+          }
         })
       )
     );

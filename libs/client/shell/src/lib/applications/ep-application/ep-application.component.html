@@ -117,9 +117,9 @@
           </im-error>
         </im-item>
 
-        <im-item [touched]="true" label="Address">
+        <im-item [touched]="true" label="Street Address">
           <ion-icon slot="start" name="home" class="header-icon"></ion-icon>
-          <input formControlName="address1" placeholder="Address" />
+          <input formControlName="address1" placeholder="Street Address" />
           <im-error *ngIf="!epForm.controls.address1.valid && epForm.controls.address1.touched">
             Please enter a valid address.
           </im-error>
@@ -143,20 +143,17 @@
 
         <im-item
           label="State"
-          [required]="true"
-          [hasError]="!epForm.controls.state.valid && epForm.controls.state.touched"
-        >
+          [required]="false">
           <ion-select (ionChange)="USStateChange($event)" [value]="selectedUSState">
             <ion-select-option *ngFor="let state of USStates" [value]="state">
               {{ state }}
             </ion-select-option>
           </ion-select>
-          <im-error *ngIf="!epForm.controls.state.valid && epForm.controls.state.touched">
-            Please select a state.
-          </im-error>
         </im-item>
 
-        <im-item [touched]="true" label="Zip Code">
+        <im-item [touched]="true" 
+          label="Zip Code"
+          [required]="true">
           <ion-icon slot="start" name="home" class="header-icon"></ion-icon>
           <input formControlName="zip" placeholder="Zip Code" />
           <im-error *ngIf="!epForm.controls.zip.valid && epForm.controls.zip.touched">
