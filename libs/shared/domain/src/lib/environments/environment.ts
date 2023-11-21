@@ -65,4 +65,5 @@ export const environment: Env = {
     saltSeparator: 'Bw==',
     signerKey: 'de/PQ/Gy53mgslvUgDUKDCgHJPArYqbFnGILLQZNe5My/CvqIThVL/CsndU8oudZ9lc4B7PT8w3sAar2/luQxA==',
   },
+  locationServicesEnabled: true
 };
