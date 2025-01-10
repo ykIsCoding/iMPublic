@@ -59,8 +59,14 @@ ion-header .toolbar-title-default {
   --border-color: var(--im-border-color) !important;
 }
 
+
 ion-menu-button {
   color: var(--ion-text-color);
+}
+
+.menu-button {
+  position: relative;
+  width: fit-content;
 }
 
 ion-title {

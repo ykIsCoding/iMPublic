@@ -82,6 +82,8 @@ ion-menu {
   }
 }
 
+
+
 .login {
   display: grid;
   gap: 0.75rem;
@@ -313,4 +315,14 @@ ion-badge {
   left: 26px;
   z-index: 1;
   margin-top: 7px;
+}
+
+.red-dot {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
 }

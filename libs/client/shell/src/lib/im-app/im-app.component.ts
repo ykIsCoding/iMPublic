@@ -64,6 +64,7 @@ interface Menu {
   uponActivation?: () => unknown;
   active: boolean;
   profile?: SpActiveProfile | CmActiveProfile | EpActiveProfile;
+  newUser?: boolean
 }
 
 interface State {
@@ -239,6 +240,7 @@ export class ImAppComponent extends StatefulComponent<State> implements OnInit {
             const authenticated = !!id;
             const adminMode = id === ImConfig.adminEmail;
             const noProfiles = !changeMaker && exchangeAdmins.length === 0 && serveAdmins.length === 0;
+            
 
             const needOnboarding = exchangeAdmins.find(
               (sa) => sa.exchangePartner.onboardingState !== EpOnboardingState.none
@@ -706,6 +708,7 @@ export class ImAppComponent extends StatefulComponent<State> implements OnInit {
                 click: () => this.route.to.applications.ep.ROOT(),
                 inMenu: true,
                 inTabs: true,
+                
               };
 
               const registerSp: MenuItem = {
@@ -717,6 +720,7 @@ export class ImAppComponent extends StatefulComponent<State> implements OnInit {
                 click: () => this.route.to.applications.sp.ROOT(),
                 inMenu: true,
                 inTabs: true,
+                
               };
 
               menus.push({
@@ -726,8 +730,11 @@ export class ImAppComponent extends StatefulComponent<State> implements OnInit {
                 active: noProfiles,
                 uponActivation: () => setImPrimaryColors('none'),
                 items: [...createCmProfile, registerEp, registerSp],
+                newUser: this.state?.changeMaker?.onboardingState==null
               });
             }
+
+            console.log(this.state)
 
             if (authenticated && !adminMode && baAdmin) {
               selectBusinessProfile = {
@@ -1039,6 +1046,7 @@ export class ImAppComponent extends StatefulComponent<State> implements OnInit {
     !menu.active && menu.items[0].click?.();
     this.state.menus.forEach((m) => (m.active = false));
     menu.active = true;
+    menu.newUser = false;
     if (menu.profile) {
       this.user.session.dispatchers.setActiveProfile(menu.profile.id);
       this.menu.close();

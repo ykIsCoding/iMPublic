@@ -24,7 +24,7 @@ interface State {
 })
 export class BrowseProjectsComponent extends StatefulComponent<State> implements OnInit {
   @Input() inline = false;
-
+  
   constructor(
     private readonly user: UserFacade,
     private readonly route: RouteService,
@@ -36,7 +36,10 @@ export class BrowseProjectsComponent extends StatefulComponent<State> implements
   ngOnInit() {
     this.effect(() =>
       this.user.projects.selectors.projects$.pipe(
-        tap(({ projects, loaded }) =>
+        tap(({ projects, 
+          loaded,
+
+        }) =>
           this.updateState({
             // Filter by public so it won't show any unlisted projects that an SP may have viewed
             // then went back to the projects feed.
@@ -46,6 +49,7 @@ export class BrowseProjectsComponent extends StatefulComponent<State> implements
         )
       )
     );
+
   }
 
   refresh() {

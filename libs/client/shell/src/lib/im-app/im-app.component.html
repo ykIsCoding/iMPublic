@@ -72,6 +72,8 @@
                   [style.font-weight]="menu.profile?.id === state.activeProfile?.id ? '700' : '500'"
                 >
                   <div class="menu-title">
+                    <div class="menu-button">
+                      <span *ngIf="menu.newUser" class="red-dot"></span>
                     <ion-icon
                       slot="start"
                       [name]="
@@ -82,15 +84,19 @@
                           : menu.icon
                       "
                       [style.color]="menu.active ? getMenuColor(menu) : menu!.color"
-                    ></ion-icon>
+                    >
+                  </ion-icon>
+                    </div>
                     <div [style.overflow]="'auto'">
                       <div class="im-ellipsis">{{ menu.title }}</div>
                       <div [style.font-size]="'12px'" [style.filter]="'contrast(0.5)'">
                         {{ menu.subtitle }}
                       </div>
                     </div>
+                    
                   </div>
                 </div>
+                
               </ng-container>
               <ng-container *ngIf="state.selectBusinessProfile as selectBusinessProfile">
                 <div
@@ -123,7 +129,8 @@
             </div>
             <div *ngIf="activeMenu() as menu">
               <ng-container *ngFor="let item of inMenu(menu.items)">
-                <ng-template *ngTemplateOutlet="menuItem; context: { item: item, menu: menu }"></ng-template>
+                <ng-template *ngTemplateOutlet="menuItem; context: { item: item, menu: menu }">
+                </ng-template>
               </ng-container>
             </div>
           </div>
@@ -256,6 +263,7 @@
       [style.color]="item.isActiveRoute ? item!.color || menu.color : 'var(--im-menu-item-icon)'"
       slot="start"
     ></ion-icon>
+    
     <div class="item-loader" *ngIf="item.loading">
       <ion-spinner [style.color]="item!.color || menu.color" name="crescent"></ion-spinner>
     </div>

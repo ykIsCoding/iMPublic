@@ -11,26 +11,26 @@ export const environment: Env = {
   storageBucket: 'your storage bucket',
   adminPasswordHash:
     'sZfCJx5X3sGSwkokIs9IVFxDfxWd2lEKsAhkOSDfEK8u2YS98y5rJAmXmtrJs7AQ29xkHMmz0bDfLkXCKS9/+A==',
-  gcpApiKey: 'insert your key here',
+  gcpApiKey: 'd3bc00fb88df36fc7b9d1d6a2cc77fb49f06acea',
   typeOrmConfig: {
     type: 'postgres',
     host: '127.0.0.1',
     port: 5433,
     username: 'postgres',
-    password: '1Qazxsw2',
+    password: 'postgres',
     database: 'involvemint',
     synchronize: true,
     autoLoadEntities: true,
     ssl: false,
   },
   firebaseEnv: {
-    apiKey: 'insert your key here',
-    authDomain: 'firebase auth domain',
+    apiKey: 'AIzaSyBFyGBc8BOLaaI0zjxoYPrRSJe27VzVen8',
+    authDomain: 'involvemint-local.firebaseapp.com',
     databaseURL: '',
-    projectId: 'your project id',
-    storageBucket: 'Your project storage bucket', //your-something.appspot.com
-    messagingSenderId: '',
-    appId: 'your app id',
+    projectId: 'involvemint-local',
+    storageBucket: 'involvemint-local.firebasestorage.app', //your-something.appspot.com
+    messagingSenderId: '1095447225298',
+    appId: '1:1095447225298:web:435ccf452e786725071e0b',
     measurementId: 'Your measurementId',
   },
   // mailgun and twilio are optional
