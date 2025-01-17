@@ -730,7 +730,7 @@ export class ImAppComponent extends StatefulComponent<State> implements OnInit {
                 active: noProfiles,
                 uponActivation: () => setImPrimaryColors('none'),
                 items: [...createCmProfile, registerEp, registerSp],
-                newUser: this.state?.changeMaker?.onboardingState==null
+                newUser:  (exchangeAdmins.length === 0 || serveAdmins.length === 0 )
               });
             }
 
