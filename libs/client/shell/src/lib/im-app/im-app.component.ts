@@ -67,7 +67,7 @@ interface Menu {
   newUser?: boolean
 }
 
-interface State {
+export interface State {
   menus: Menu[];
   selectBusinessProfile: Menu | null;
   selectedRoute: string;

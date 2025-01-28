@@ -15,6 +15,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProjectUpsertComponent } from './project-upsert/project-upsert.component';
 import { ProjectsPageComponent } from './projects-page/projects-page.component';
+import { ImMenuButtonModule } from "../../../../../shared/ui/src/lib/im-menu-button/im-menu-button.module";
 
 @NgModule({
   declarations: [ProjectsPageComponent, ProjectUpsertComponent],
@@ -32,16 +33,17 @@ import { ProjectsPageComponent } from './projects-page/projects-page.component';
     CurrencyMaskModule,
     NgxPaginationModule,
     RouterModule.forChild([
-      {
-        path: '',
-        component: ProjectsPageComponent,
-      },
-      {
-        path: `:id`,
-        component: ProjectUpsertComponent,
-        canDeactivate: [ConfirmDeactivationGuard],
-      },
+        {
+            path: '',
+            component: ProjectsPageComponent,
+        },
+        {
+            path: `:id`,
+            component: ProjectUpsertComponent,
+            canDeactivate: [ConfirmDeactivationGuard],
+        },
     ]),
-  ],
+    ImMenuButtonModule
+],
 })
 export class SpProjectsModule {}

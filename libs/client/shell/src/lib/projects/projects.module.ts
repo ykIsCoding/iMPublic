@@ -12,6 +12,7 @@ import {
 import { IonicModule } from '@ionic/angular';
 import { BrowseProjectsComponent } from './browse-projects/browse-projects.component';
 import { ProjectCoverPageComponent } from './project-cover-page/project-cover-page.component';
+import { ImMenuButtonModule } from "../../../../shared/ui/src/lib/im-menu-button/im-menu-button.module";
 
 @NgModule({
   declarations: [BrowseProjectsComponent],
@@ -25,7 +26,8 @@ import { ProjectCoverPageComponent } from './project-cover-page/project-cover-pa
     ImCardModule,
     ImLoadingRouteDirectiveModule,
     ImViewProfileModalModule,
-  ],
+    ImMenuButtonModule
+],
 })
 export class BrowseProjectsModule {}
 

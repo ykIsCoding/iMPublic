@@ -11,3 +11,4 @@ export * from './lib/im-progress/im-progress.module';
 export * from './lib/im-tabs/im-tabs.module';
 export * from './lib/remove-wrapper/remove-wrapper.module';
 export * from './lib/skeleton-text/skeleton-text.module';
+export * from './lib/im-menu-button/im-menu-button.module';
