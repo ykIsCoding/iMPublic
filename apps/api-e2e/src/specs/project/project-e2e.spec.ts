@@ -12,6 +12,11 @@ import { AppTestModule } from '../../core/app-test.module';
 import { DatabaseService } from '../../core/database.service';
 import { createServeAdmin } from '../serve-admin/serve-admin.helpers';
 import { createServePartner } from '../serve-partner/serve-partner.helpers';
+<<<<<<< HEAD
+=======
+import { createUserOrchestration } from '../user/user.orchestration';
+import { createProjectOrchestration } from './project.orchestration';
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
 import supertest from 'supertest'
 
 describe('Project Integration Tests', () => {
@@ -23,7 +28,11 @@ describe('Project Integration Tests', () => {
   let projectRepo: ProjectRepository;
 
   const creds = { id: 'email@email.com', password: 'GoodPwd@341' };
+<<<<<<< HEAD
   let token: string;
+=======
+  let auth: { body: { token: string }; statusCode: HttpStatus };
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
 
   const spQuery = createQuery<ServePartner>()({ id: true });
   let sp: IParser<ServePartner, typeof spQuery>;
@@ -78,6 +87,7 @@ describe('Project Integration Tests', () => {
   describe('getAll', () => {
     it('should not get private projects (project is private by default)', async () => {
 
+<<<<<<< HEAD
       const { body } = await supertest(app.getHttpServer())
       .post('/project/getAll')
       .set('token', token)
@@ -89,6 +99,13 @@ describe('Project Integration Tests', () => {
       });
       
       expect(body.length).toBe(0);
+=======
+      const result = await supertest(app.getHttpServer())
+      .post(`/orcha/project/getAll`)
+      .field('query', JSON.stringify(projectQuery));
+
+      expect(result.body.length).toBe(0);
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should not get unlisted projects', async () => {
       await projectRepo.update(project.id, { listingStatus: 'unlisted' });

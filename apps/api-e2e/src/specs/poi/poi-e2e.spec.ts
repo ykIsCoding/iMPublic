@@ -34,7 +34,11 @@ import { createServePartner } from '../serve-partner/serve-partner.helpers';
 import supertest from 'supertest';
 import { createServeAdmin } from '../serve-admin/serve-admin.helpers';
 
+<<<<<<< HEAD
 describe('POI Integration Tests', () => {
+=======
+describe('POI Orchestration Integration Tests', () => {
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
   let app: INestApplication;
   let db: DatabaseService;
 
@@ -48,9 +52,15 @@ describe('POI Integration Tests', () => {
   let storage: StorageService;
 
   const creds = { id: 'email@email.com', password: 'GoodPwd@341' };
+<<<<<<< HEAD
   let token: string;
   const poiApproverOrDenierCreds = { id: 'email2@email.com', password: 'GoodPwd@341' };
   let poiApproverOrDenyer: string;
+=======
+  let auth: { body: { token: string }; statusCode: HttpStatus };
+  const poiApproverOrDenierCreds = { id: 'email2@email.com', password: 'GoodPwd@341' };
+  let poiApproverOrDenyer: { body: { token: string }; statusCode: HttpStatus };
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
 
   const spQuery = createQuery<ServePartner>()({ id: true });
   let sp: IParser<ServePartner, typeof spQuery>;
@@ -113,6 +123,7 @@ describe('POI Integration Tests', () => {
 
   beforeEach(async () => {
     await db.clearDb();
+<<<<<<< HEAD
 
     const userSignUpResult = await supertest(app.getHttpServer())
       .post('/user/signUp')
@@ -133,6 +144,33 @@ describe('POI Integration Tests', () => {
     sp = await createServePartner(spQuery, spRepo, { id: uuid.v4(), handle: 'spHandle' });
 
     await createServeAdmin({}, saRepo, creds.id, sp.id);
+=======
+    auth = await userOrcha.signUp({ token: true }, '', creds);
+    poiApproverOrDenyer = await userOrcha.signUp({ token: true }, '', poiApproverOrDenierCreds);
+    sp = await createServePartner(spQuery, spRepo, { id: uuid.v4(), handle: 'spHandle' });
+
+    await saRepo.upsert(
+      {
+        id: uuid.v4(),
+        datePermitted: new Date(),
+        servePartner: sp.id,
+        superAdmin: true,
+        user: creds.id,
+      },
+      {}
+    );
+    
+    await saRepo.upsert(
+      {
+        id: uuid.v4(),
+        datePermitted: new Date(),
+        servePartner: sp.id,
+        superAdmin: true,
+        user: poiApproverOrDenierCreds.id,
+      },
+      {}
+    );
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
 
     await createServeAdmin({}, saRepo, poiApproverOrDenierCreds.id, sp.id);
 
@@ -283,6 +321,7 @@ describe('POI Integration Tests', () => {
           [QUERY_KEY]: poiQuery,
           [DTO_KEY]: { enrollmentId: enrollment.id }
         });
+<<<<<<< HEAD
         expect(calculatePoiStatus(poiCreateResult.body)).toBe(PoiStatus.created);
         const tempCreateResult = await supertest(app.getHttpServer())
         .post('/poi/create')
@@ -298,6 +337,17 @@ describe('POI Integration Tests', () => {
 
         expect(responseText).toBe('You have an unsubmitted Proof of Impact to the Project Enrollment:\n' +
         `            ${poiCreateResult.body.enrollment.project.title}. Please submit or withdraw this Proof of Impact\n` +
+=======
+        expect(calculatePoiStatus(poi)).toBe(PoiStatus.created);
+        const temp = await poiOrcha.create(poiQuery, auth.body.token, {
+          enrollmentId: enrollment.id,
+        });
+
+        const responseText =JSON.parse(temp.text)['response']['text'];
+
+        expect(responseText).toBe('You have an unsubmitted Proof of Impact to the Project Enrollment:\n' +
+        `            ${poi.enrollment.project.title}. Please submit or withdraw this Proof of Impact\n` +
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
         '            before creating a new one.');
 
       });
@@ -314,6 +364,7 @@ describe('POI Integration Tests', () => {
 
         const poi = await poiRepo.update(poiCreateResult.body.id, { dateStarted: new Date() }, poiQuery);
         expect(calculatePoiStatus(poi)).toBe(PoiStatus.started);
+<<<<<<< HEAD
         
         const poiCreateResult2 = await supertest(app.getHttpServer())
         .post('/poi/create')
@@ -326,6 +377,12 @@ describe('POI Integration Tests', () => {
         });
 
         const responseText =JSON.parse(poiCreateResult2.text)['response']['text'];
+=======
+        const result = await poiOrcha.create(poiQuery, auth.body.token, {
+          enrollmentId: enrollment.id,
+        });
+        const responseText =JSON.parse(result.text)['response']['text'];
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
 
         expect(responseText).toBe('You have an unsubmitted Proof of Impact to the Project Enrollment:\n' +
         `            ${poi.enrollment.project.title}. Please submit or withdraw this Proof of Impact\n` +
@@ -348,6 +405,7 @@ describe('POI Integration Tests', () => {
           poiQuery
         );
         expect(calculatePoiStatus(poi)).toBe(PoiStatus.paused);
+<<<<<<< HEAD
 
         const poiCreateResult2 = await supertest(app.getHttpServer())
         .post('/poi/create')
@@ -360,6 +418,13 @@ describe('POI Integration Tests', () => {
         });
 
         const responseText =JSON.parse(poiCreateResult2.text)['response']['text'];
+=======
+        const result = await poiOrcha.create(poiQuery, auth.body.token, {
+          enrollmentId: enrollment.id,
+        });
+
+        const responseText =JSON.parse(result.text)['response']['text'];
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
 
         expect(responseText).toBe('You have an unsubmitted Proof of Impact to the Project Enrollment:\n' +
         `            ${poi.enrollment.project.title}. Please submit or withdraw this Proof of Impact\n` +
@@ -381,6 +446,7 @@ describe('POI Integration Tests', () => {
           poiQuery
         );
         expect(calculatePoiStatus(poi)).toBe(PoiStatus.stopped);
+<<<<<<< HEAD
 
         const poiCreateResult2 = await supertest(app.getHttpServer())
         .post('/poi/create')
@@ -393,6 +459,12 @@ describe('POI Integration Tests', () => {
         });
 
         const responseText =JSON.parse(poiCreateResult2.text)['response']['text'];
+=======
+        const result = await poiOrcha.create(poiQuery, auth.body.token, {
+          enrollmentId: enrollment.id,
+        });
+        const responseText =JSON.parse(result.text)['response']['text'];
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
 
         expect(responseText).toBe('You have an unsubmitted Proof of Impact to the Project Enrollment:\n' +
         `            ${poi.enrollment.project.title}. Please submit or withdraw this Proof of Impact\n` +
@@ -897,6 +969,7 @@ describe('POI Integration Tests', () => {
   });
   describe('resume', () => {
     it('should not resume if in created state', async () => {
+<<<<<<< HEAD
       const poiCreateResult = await supertest(app.getHttpServer())
         .post('/poi/create')
         .set('token', token)
@@ -922,6 +995,13 @@ describe('POI Integration Tests', () => {
       {
         expect(JSON.parse(error.text).message).toBe('This Proof of Impact is not in a valid state to be resumed.');
       }
+=======
+      const { body: poi } = await poiOrcha.create(poiQuery, auth.body.token, { enrollmentId: enrollment.id });
+      expect(calculatePoiStatus(poi)).toBe(PoiStatus.created);
+      const { error } = await poiOrcha.resume({}, auth.body.token, { poiId: poi.id });
+      
+      expect(error).toBe('This Proof of Impact is not in a valid state to be resumed.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should resume if in paused state', async () => {
       const poiCreateResult = await supertest(app.getHttpServer())
@@ -1143,6 +1223,7 @@ describe('POI Integration Tests', () => {
   });
   describe('approve', () => {
     it('should not approve if in created state', async () => {
+<<<<<<< HEAD
       const poiCreateResult = await supertest(app.getHttpServer())
         .post('/poi/create')
         .set('token', token)
@@ -1168,6 +1249,12 @@ describe('POI Integration Tests', () => {
       {
         expect(JSON.parse(error.text).message).toBe('This Proof of Impact must first be submitted to be approved.');
       }
+=======
+      const { body: poi } = await poiOrcha.create(poiQuery, auth.body.token, { enrollmentId: enrollment.id });
+      expect(calculatePoiStatus(poi)).toBe(PoiStatus.created);
+      const { error } = await poiOrcha.approve({}, poiApproverOrDenyer.body.token, { poiId: poi.id });
+      expect(error).toBe('This Proof of Impact must first be submitted to be approved.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should not approve if in started state', async () => {
       const poiCreateResult = await supertest(app.getHttpServer())
@@ -1181,6 +1268,7 @@ describe('POI Integration Tests', () => {
         });
       const poi = await poiRepo.update(poiCreateResult.body.id, { dateStarted: new Date() }, poiQuery);
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.started);
+<<<<<<< HEAD
 
       const { error } = await supertest(app.getHttpServer())
         .post('/poi/approve')
@@ -1196,6 +1284,10 @@ describe('POI Integration Tests', () => {
         {
           expect(JSON.parse(error.text).message).toBe('This Proof of Impact must first be submitted to be approved.');
         }
+=======
+      const { error } = await poiOrcha.approve({}, poiApproverOrDenyer.body.token, { poiId: poi.id });
+      expect(error).toBe('This Proof of Impact must first be submitted to be approved.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should not approve if in paused state', async () => {
       const poiCreateResult = await supertest(app.getHttpServer())
@@ -1209,6 +1301,7 @@ describe('POI Integration Tests', () => {
         });
       const poi = await poiRepo.update(poiCreateResult.body.id, { pausedTimes: [new Date()] }, poiQuery);
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.paused);
+<<<<<<< HEAD
 
       const { error } = await supertest(app.getHttpServer())
         .post('/poi/approve')
@@ -1224,6 +1317,10 @@ describe('POI Integration Tests', () => {
       {
         expect(JSON.parse(error.text).message).toBe('This Proof of Impact must first be submitted to be approved.');
       }
+=======
+      const { error } = await poiOrcha.approve({}, poiApproverOrDenyer.body.token, { poiId: poi.id });
+      expect(error).toBe('This Proof of Impact must first be submitted to be approved.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should not approve if in resumed state', async () => {
       const poiCreateResult = await supertest(app.getHttpServer())
@@ -1237,6 +1334,7 @@ describe('POI Integration Tests', () => {
         });
       const poi = await poiRepo.update(poiCreateResult.body.id, { pausedTimes: [new Date()], resumedTimes: [new Date()] }, poiQuery);
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.started);
+<<<<<<< HEAD
       
       const { error } = await supertest(app.getHttpServer())
         .post('/poi/approve')
@@ -1252,6 +1350,10 @@ describe('POI Integration Tests', () => {
       {
         expect(JSON.parse(error.text).message).toBe('This Proof of Impact must first be submitted to be approved.');
       }
+=======
+      const { error } = await poiOrcha.approve({}, poiApproverOrDenyer.body.token, { poiId: poi.id });
+      expect(error).toBe('This Proof of Impact must first be submitted to be approved.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should not approve if in stopped state', async () => {
       const poiCreateResult = await supertest(app.getHttpServer())
@@ -1265,6 +1367,7 @@ describe('POI Integration Tests', () => {
         });
       const poi = await poiRepo.update(poiCreateResult.body.id, { dateStopped: new Date() }, poiQuery);
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.stopped);
+<<<<<<< HEAD
       
       const { error } = await supertest(app.getHttpServer())
         .post('/poi/approve')
@@ -1280,6 +1383,10 @@ describe('POI Integration Tests', () => {
       {
         expect(JSON.parse(error.text).message).toBe('This Proof of Impact must first be submitted to be approved.');
       }
+=======
+      const { error } = await poiOrcha.approve({}, poiApproverOrDenyer.body.token, { poiId: poi.id });
+      expect(error).toBe('This Proof of Impact must first be submitted to be approved.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should not approve if in denied state', async () => {
       const poiCreateResult = await supertest(app.getHttpServer())
@@ -1293,6 +1400,7 @@ describe('POI Integration Tests', () => {
         });
       const poi = await poiRepo.update(poiCreateResult.body.id, { dateDenied: new Date() }, poiQuery);
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.denied);
+<<<<<<< HEAD
       
       const { error } = await supertest(app.getHttpServer())
         .post('/poi/approve')
@@ -1308,6 +1416,10 @@ describe('POI Integration Tests', () => {
         {
           expect(JSON.parse(error.text).message).toBe('This Proof of Impact must first be submitted to be approved.');
         }
+=======
+      const { error } = await poiOrcha.approve({}, poiApproverOrDenyer.body.token, { poiId: poi.id });
+      expect(error).toBe('This Proof of Impact must first be submitted to be approved.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should approve if in submitted state', async () => {
       const poiCreateResult = await supertest(app.getHttpServer())
@@ -1325,6 +1437,7 @@ describe('POI Integration Tests', () => {
         poiQuery
       );
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.submitted);
+<<<<<<< HEAD
       
       const { body } = await supertest(app.getHttpServer())
         .post('/poi/approve')
@@ -1336,6 +1449,9 @@ describe('POI Integration Tests', () => {
           [DTO_KEY]: { poiId: poiCreateResult.body.id }
         });
       
+=======
+      const { body } = await poiOrcha.approve(poiQuery, poiApproverOrDenyer.body.token, { poiId: poi.id });
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
       expect(calculatePoiStatus(body)).toBe(PoiStatus.approved);
     });
     it('should create if in submitted state with correct amount of credits', async () => {
@@ -1358,6 +1474,7 @@ describe('POI Integration Tests', () => {
         poiQuery
       );
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.submitted);
+<<<<<<< HEAD
       
       const { body } = await supertest(app.getHttpServer())
         .post('/poi/approve')
@@ -1369,6 +1486,9 @@ describe('POI Integration Tests', () => {
           [DTO_KEY]: { poiId: poiCreateResult.body.id }
         });
       
+=======
+      const { body } = await poiOrcha.approve(poiQuery, poiApproverOrDenyer.body.token, { poiId: poi.id });
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
       expect(calculatePoiStatus(body)).toBe(PoiStatus.approved);
       const credits = await creditRepo.findAll();
       expect(credits[0].amount).toBe(ImConfig.creditsPerHour / 6);
@@ -1376,6 +1496,7 @@ describe('POI Integration Tests', () => {
   });
   describe('deny', () => {
     it('should not deny if in created state', async () => {
+<<<<<<< HEAD
       const poiCreateResult = await supertest(app.getHttpServer())
         .post('/poi/create')
         .set('token', token)
@@ -1401,6 +1522,12 @@ describe('POI Integration Tests', () => {
       {
         expect(JSON.parse(error.text).message).toBe('This Proof of Impact must first be submitted to be denied.');
       }
+=======
+      const { body: poi } = await poiOrcha.create(poiQuery, auth.body.token, { enrollmentId: enrollment.id });
+      expect(calculatePoiStatus(poi)).toBe(PoiStatus.created);
+      const { error } = await poiOrcha.deny({}, poiApproverOrDenyer.body.token, { poiId: poi.id });
+      expect(error).toBe('This Proof of Impact must first be submitted to be denied.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should not deny if in started state', async () => {
       const poiCreateResult = await supertest(app.getHttpServer())
@@ -1414,6 +1541,7 @@ describe('POI Integration Tests', () => {
         });
       const poi = await poiRepo.update(poiCreateResult.body.id, { dateStarted: new Date() }, poiQuery);
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.started);
+<<<<<<< HEAD
       
       const { error } = await supertest(app.getHttpServer())
         .post('/poi/deny')
@@ -1430,6 +1558,10 @@ describe('POI Integration Tests', () => {
         expect(JSON.parse(error.text).message).toBe('This Proof of Impact must first be submitted to be denied.');
 
       }
+=======
+      const { error } = await poiOrcha.deny({}, poiApproverOrDenyer.body.token, { poiId: poi.id });
+      expect(error).toBe('This Proof of Impact must first be submitted to be denied.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should not deny if in paused state', async () => {
       const poiCreateResult = await supertest(app.getHttpServer())
@@ -1443,6 +1575,7 @@ describe('POI Integration Tests', () => {
         });
       const poi = await poiRepo.update(poiCreateResult.body.id, { pausedTimes: [new Date()] }, poiQuery);
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.paused);
+<<<<<<< HEAD
       
       const { error } = await supertest(app.getHttpServer())
         .post('/poi/deny')
@@ -1459,6 +1592,10 @@ describe('POI Integration Tests', () => {
         expect(JSON.parse(error.text).message).toBe('This Proof of Impact must first be submitted to be denied.');
       }
 
+=======
+      const { error } = await poiOrcha.deny({}, poiApproverOrDenyer.body.token, { poiId: poi.id });
+      expect(error).toBe('This Proof of Impact must first be submitted to be denied.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should not deny if in resumed state', async () => {
       const poiCreateResult = await supertest(app.getHttpServer())
@@ -1472,6 +1609,7 @@ describe('POI Integration Tests', () => {
         });
       const poi = await poiRepo.update(poiCreateResult.body.id, { pausedTimes: [new Date()], resumedTimes: [new Date()] }, poiQuery);
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.started);
+<<<<<<< HEAD
       
       const { error } = await supertest(app.getHttpServer())
         .post('/poi/deny')
@@ -1487,6 +1625,10 @@ describe('POI Integration Tests', () => {
       {
         expect(JSON.parse(error.text).message).toBe('This Proof of Impact must first be submitted to be denied.');
       }
+=======
+      const { error } = await poiOrcha.deny({}, poiApproverOrDenyer.body.token, { poiId: poi.id });
+      expect(error).toBe('This Proof of Impact must first be submitted to be denied.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should not deny if in stopped state', async () => {
       const poiCreateResult = await supertest(app.getHttpServer())
@@ -1500,6 +1642,7 @@ describe('POI Integration Tests', () => {
         });
       const poi = await poiRepo.update(poiCreateResult.body.id, { dateStopped: new Date() }, poiQuery);
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.stopped);
+<<<<<<< HEAD
       
       const { error } = await supertest(app.getHttpServer())
         .post('/poi/deny')
@@ -1515,6 +1658,10 @@ describe('POI Integration Tests', () => {
       {
         expect(JSON.parse(error.text).message).toBe('This Proof of Impact must first be submitted to be denied.');
       }
+=======
+      const { error } = await poiOrcha.deny({}, poiApproverOrDenyer.body.token, { poiId: poi.id });
+      expect(error).toBe('This Proof of Impact must first be submitted to be denied.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
     it('should not deny if in denied state', async () => {
       const poiCreateResult = await supertest(app.getHttpServer())
@@ -1528,6 +1675,7 @@ describe('POI Integration Tests', () => {
         });
       const poi = await poiRepo.update(poiCreateResult.body.id, { dateDenied: new Date() }, poiQuery);
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.denied);
+<<<<<<< HEAD
       
       const { error } = await supertest(app.getHttpServer())
         .post('/poi/deny')
@@ -1543,6 +1691,10 @@ describe('POI Integration Tests', () => {
       {
         expect(JSON.parse(error.text).message).toBe('This Proof of Impact must first be submitted to be denied.');
       }
+=======
+      const { error } = await poiOrcha.deny({}, poiApproverOrDenyer.body.token, { poiId: poi.id });
+      expect(error).toBe('This Proof of Impact must first be submitted to be denied.');
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
     });
 
     it('should deny if in submitted state', async () => {
@@ -1557,6 +1709,7 @@ describe('POI Integration Tests', () => {
         });
       const poi = await poiRepo.update(poiCreateResult.body.id, { dateSubmitted: new Date() }, poiQuery);
       expect(calculatePoiStatus(poi)).toBe(PoiStatus.submitted);
+<<<<<<< HEAD
       const { body } = await supertest(app.getHttpServer())
         .post('/poi/deny')
         .set('token', poiApproverOrDenyer)
@@ -1567,6 +1720,9 @@ describe('POI Integration Tests', () => {
           [DTO_KEY]: { poiId: poiCreateResult.body.id }
         });
       
+=======
+      const { body } = await poiOrcha.deny(poiQuery, poiApproverOrDenyer.body.token, { poiId: poi.id });
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
       expect(calculatePoiStatus(body)).toBe(PoiStatus.denied);
     });
   });

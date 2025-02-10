@@ -11,6 +11,11 @@ describe('User Integration Tests', () => {
   let db: DatabaseService;
   let userRepo: UserRepository;
 
+<<<<<<< HEAD
+=======
+  let userOrcha: ITestOrchestration<IUserOrchestration>;
+
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
   const creds = { id: 'email@email.com', password: 'GoodPwd@341' };
   let auth: { body: { token: string }; statusCode: HttpStatus };
 
@@ -123,11 +128,15 @@ describe('User Integration Tests', () => {
      */
     it('should not give user data if unverified email', async () => {
       environment.environment = 'production';
+<<<<<<< HEAD
       const { statusCode } = await supertest(app.getHttpServer())
       .post('/user/getUserData')
       .send({
         [QUERY_KEY]: {}
       });
+=======
+      const { statusCode } = await userOrcha.getUserData({}, auth.body.token);
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
       expect(statusCode).toBe(HttpStatus.UNAUTHORIZED);
       environment.environment = 'local';
     });

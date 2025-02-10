@@ -6,7 +6,11 @@ import { DatabaseService } from '../../core/database.service';
 import supertest from 'supertest';
 import { DTO_KEY, QUERY_KEY } from '@involvemint/shared/domain';
 
+<<<<<<< HEAD
 describe('Handle Integration Tests', () => {
+=======
+describe('Handle Orchestration Integration Tests', () => {
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
   let app: INestApplication;
   let db: DatabaseService;
 

@@ -16,7 +16,11 @@ describe('ChangeMaker Integration Tests', () => {
   let cmRepo: ChangeMakerRepository;
 
   const creds = { id: 'email@email.com', password: 'GoodPwd@341' };
+<<<<<<< HEAD
   let token: string;
+=======
+  let auth: { body: { token: string }; statusCode: HttpStatus };
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
 
   const cmQuery = createQuery<ChangeMaker>()({ id: true, firstName: true, handle: { id: true } });
   let cmProfile: IParser<ChangeMaker, typeof cmQuery>;

@@ -1,7 +1,10 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 # environment file
 environment.ts
+<<<<<<< HEAD
 environment.local.ts
+=======
+>>>>>>> ddea771773c0c3efe9a694bf9e6b4622887bd774
 
 # compiled output
 /dist
