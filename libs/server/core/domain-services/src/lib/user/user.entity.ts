@@ -39,6 +39,11 @@ export class UserEntity implements Required<User> {
   @Column({ default: false })
   baAdmin!: boolean;
 
+  
+  @Column({ default: false })
+  actionedOnAccountSetup!: boolean;
+
+
   @OneToOne(() => ChangeMakerEntity, (e) => e.user, { nullable: true })
   @JoinColumn()
   changeMaker!: ChangeMakerEntity;

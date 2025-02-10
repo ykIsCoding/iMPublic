@@ -191,6 +191,9 @@ export class UserController {
     return this.user.finishJoyride(token);
   }
 
+  
+  
+
   @Post('adminUserSearch')
   async adminUserSearch(
     @Body(QUERY_KEY, new QueryValidationPipe(UserQuery)) query: IQuery<User[]>, 

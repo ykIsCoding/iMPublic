@@ -17,7 +17,7 @@ export interface User {
   forgotPasswordHash?: string;
   joyride: boolean;
   baAdmin: boolean;
-
+  actionedOnAccountSetup:boolean;
   changeMaker?: IOneToOne<ChangeMaker, 'user'>;
   serveAdmins: IOneToMany<ServeAdmin, 'user'>;
   exchangeAdmins: IOneToMany<ExchangeAdmin, 'user'>;

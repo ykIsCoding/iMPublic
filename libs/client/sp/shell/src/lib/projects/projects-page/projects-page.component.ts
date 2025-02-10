@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { RouteService } from '@involvemint/client/shared/routes';
+import { ImMenuButtonComponent } from '@involvemint/client/shared/ui';
 import { StatefulComponent } from '@involvemint/client/shared/util';
 import { ProjectSpStoreModel, ServePartnerFacade } from '@involvemint/client/sp/data-access';
+import { UserRepository } from '@involvemint/server/core/domain-services';
 import { tap } from 'rxjs/operators';
 
 interface State {

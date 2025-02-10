@@ -2,7 +2,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef,  Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { StatefulComponent } from '@involvemint/client/shared/util';
-
+import { UserRepository } from '@involvemint/server/core/domain-services';
 
 export interface ImMenuButtonComponentInput {
   showRedDot: boolean
@@ -23,8 +23,9 @@ export class ImMenuButtonComponent implements Required<ImMenuButtonComponentInpu
   
   @Input() showRedDot!: boolean;
 
-  ngOnInit(): void {
-      this.showRedDot = true //FIND SOME SHARED STATE THAT we can get data of whether user is new or not
+  ngOnInit(): void {    
+    this.showRedDot = true;
+    //FIND SOME SHARED STATE THAT we can get data of whether user is new or not
   }
 
   safeContent!: ReturnType<DomSanitizer['bypassSecurityTrustHtml']>;
@@ -33,6 +34,7 @@ export class ImMenuButtonComponent implements Required<ImMenuButtonComponentInpu
   constructor(
     public readonly el: ElementRef,
     private readonly sanitized: DomSanitizer,
-    
+    private readonly userRepo: UserRepository,
+    private readonly auth: AuthService
   ) {}
 }
